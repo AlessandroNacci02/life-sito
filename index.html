@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>L.I.F.E – Impianti elettrici, Fotovoltaico, Domotica in Toscana</title>
+  <meta name="description" content="Impianti elettrici civili e industriali, fotovoltaico, domotica, videosorveglianza e allarmi. Soluzioni su misura a Lucca e in tutta la Toscana." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#00C853" />
+  <style>
+    :root{
+      --primary:#00C853; /* green energia */
+      --accent:#00B0FF; /* blue innovazione */
+      --bg:#F9FBF9;
+      --text:#1C1C1C;
+      --muted:#6B7280;
+      --card:#FFFFFF;
+      --line:#e5e7eb;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --shadow-strong:0 20px 50px rgba(0,0,0,0.18);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Header */
+    header{
+      position:fixed;inset:0 0 auto 0;z-index:1000;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 24px;transition:background .3s, box-shadow .3s;
+      background:rgba(255,255,255,.6);backdrop-filter:saturate(140%) blur(10px)
+    }
+    header.scrolled{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+    .brand svg{width:34px;height:34px}
+    nav a{margin-left:18px;font-weight:600;position:relative}
+    nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .25s}
+    nav a:hover::after{width:100%}
+    .cta-head{margin-left:14px;padding:8px 14px;border-radius:999px;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--primary),var(--accent));box-shadow:0 6px 18px rgba(0,0,0,.18)}
+    .lang{margin-left:10px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.9rem;background:#fff}
+
+    /* Hero */
+    .hero{position:relative;height:100vh;display:grid;place-items:center;text-align:center;color:#fff}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.45));z-index:-1}
+    .hero h1{font-size:clamp(32px,5vw,64px);margin:0 0 10px 0;font-weight:800}
+    .hero p{font-size:clamp(16px,2.2vw,22px);opacity:.95;max-width:900px;margin:0 auto}
+    .cta-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:700;
+      color:#fff;background:linear-gradient(90deg,var(--primary),var(--accent));
+      box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .2s, box-shadow .2s
+    }
+    .btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,.28)}
+    .btn-outline{background:#fff;color:var(--text);border:1px solid var(--line);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    .btn-outline:hover{box-shadow:var(--shadow)}
+
+    /* Sections */
+    section{max-width:1200px;margin:0 auto;padding:80px 24px}
+    .section-title{font-size:32px;margin:0 0 8px 0}
+    .section-sub{color:var(--muted);margin:0 0 28px 0}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transform:translateY(24px);opacity:0;transition:transform .6s ease, opacity .6s ease}
+    .card.show{transform:translateY(0);opacity:1}
+    .card-media{height:180px;overflow:hidden}
+    .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .card:hover .card-media img{transform:scale(1.08)}
+    .card-body{padding:16px 18px}
+    .card h3{margin:0 0 6px 0;color:var(--accent)}
+    .card p{margin:0 0 12px 0;color:#374151}
+    .mini{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{font-size:.82rem;padding:6px 10px;border-radius:999px;background:#F1F5F9;color:#0f172a}
+
+    /* Divider parallax */
+    .divider{height:320px;background-attachment:fixed;background-position:center;background-size:cover;border-radius:16px;margin:60px 24px}
+
+    /* Portfolio slider 3D (layout attuale dello slider semplice) */
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    /* Reviews */
+    .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .review{background:#fff;border-left:4px solid var(--primary);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+    .stars{color:#F59E0B}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .form{background:#fff;padding:18px;border-radius:16px;box-shadow:var(--shadow)}
+    .form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .form label{display:block;font-weight:600;margin:8px 0 6px}
+    .form input,.form textarea,.form select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+    .form textarea{min-height:120px;resize:vertical}
+    .note{font-size:.9rem;color:var(--muted)}
+    .contact-card{background:#fff;padding:18px;border-radius:16px;box-shadow:var(--shadow)}
+    .contact-list{list-style:none;padding:0;margin:0}
+    .contact-list li{margin-bottom:10px}
+
+    /* Footer + cookie */
+    footer{background:#ffffff;padding:32px 24px;border-top:1px solid var(--line);color:#6b7280;text-align:center}
+    .cookie{position:fixed;left:16px;right:16px;bottom:16px;background:#111;color:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;z-index:2000}
+    .cookie .btn{box-shadow:none}
+
+    /* Responsive */
+    @media (max-width:960px){
+      .contact{grid-template-columns:1fr}
+      header nav{display:none}
+      .tile{flex-basis:280px}
+      .tile img{height:200px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="hdr">
+    <div class="brand">
+      <!-- Logo provvisorio SVG -->
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#00C853"/><stop offset="1" stop-color="#00B0FF"/>
+          </linearGradient>
+        </defs>
+        <path d="M32 4c15.5 0 28 12.5 28 28S47.5 60 32 60 4 47.5 4 32 16.5 4 32 4z" fill="url(#g)"/>
+        <path d="M33 14l-8 16h10l-4 20 12-18H33l6-18z" fill="#fff" opacity=".95"/>
+      </svg>
+      <span>L.I.F.E</span>
+    </div>
+    <nav>
+      <a href="#servizi">Servizi</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#recensioni">Recensioni</a>
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a class="cta-head" href="tel:+393335044709">Chiama</a>
+      <button class="lang" id="langToggle" aria-label="Cambia lingua">IT / EN</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home" aria-label="Intro">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.coverr.co/videos/coverr-solar-panels-9714/1080p.mp4" type="video/mp4"/>
+    </video>
+    <div>
+      <h1>Energia. Sicurezza. Innovazione.</h1>
+      <p>Impianti elettrici civili e industriali, fotovoltaico, domotica, videosorveglianza e allarmi in tutta la Toscana.</p>
+      <div class="cta-row">
+        <a class="btn" href="#contatti">Richiedi preventivo</a>
+        <a class="btn btn-outline" href="tel:+393335044709">Chiama ora</a>
+        <a class="btn btn-outline" href="https://wa.me/393335044709?text=Ciao%20LIFE%2C%20vorrei%20un%20preventivo" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-outline" href="mailto:info@life.it?subject=Richiesta%20preventivo">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servizi -->
+  <section id="servizi" aria-label="I nostri servizi">
+    <h2 class="section-title">I nostri servizi</h2>
+    <p class="section-sub">Soluzioni su misura per casa e azienda. Interventi rapidi, certificati e garantiti.</p>
+    <div class="services">
+      <!-- Fotovoltaico -->
+      <article class="card">
+        <div class="card-media">
+          <!-- Sostituisci con la tua foto: tetto con pannelli (orizzontale) -->
+          <img src="https://images.unsplash.com/photo-1597094737760-9e3c6c6b1f3d?q=80&w=1200" alt="Impianto fotovoltaico su tetto residenziale"/>
+        </div>
+        <div class="card-body">
+          <h3>Fotovoltaico residenziale e industriale</h3>
+          <p>Progettazione, installazione e monitoraggio. Massima resa e detrazioni.</p>
+          <div class="mini"><span class="chip">Residenziale</span><span class="chip">Industriale</span><span class="chip">Storage</span></div>
+        </div>
+      </article>
+      <!-- Impianti elettrici -->
+      <article class="card">
+        <div class="card-media">
+          <img src="https://images.unsplash.com/photo-1581090700227-1e7e8f9f3d5b?q=80&w=1200" alt="Quadro elettrico professionale"/>
+        </div>
+        <div class="card-body">
+          <h3>Impianti elettrici civili e industriali</h3>
+          <p>Nuove installazioni, adeguamenti e certificazioni per ogni ambiente.</p>
+          <div class="mini"><span class="chip">Civile</span><span class="chip">Industriale</span><span class="chip">Certificazioni</span></div>
+        </div>
+      </article>
+      <!-- Domotica -->
+      <article class="card">
+        <div class="card-media">
+          <img src="https://images.unsplash.com/photo-1581092334607-cd6f6e8f9f3d?q=80&w=1200" alt="App di controllo domotico"/>
+        </div>
+        <div class="card-body">
+          <h3>Domotica</h3>
+          <p>Automazioni intelligenti per comfort, efficienza e sicurezza.</p>
+          <div class="mini"><span class="chip">Smart home</span><span class="chip">Integrazioni</span><span class="chip">App</span></div>
+        </div>
+      </article>
+      <!-- Videosorveglianza -->
+      <article class="card">
+        <div class="card-media">
+          <img src="https://images.unsplash.com/photo-1545259741-2ea3ebf51fc3?q=80&w=1200" alt="Telecamera di sicurezza esterna"/>
+        </div>
+        <div class="card-body">
+          <h3>Videosorveglianza</h3>
+          <p>Telecamere smart, registrazione continua e accesso remoto sicuro.</p>
+          <div class="mini"><span class="chip">IP</span><span class="chip">Cloud</span><span class="chip">App</span></div>
+        </div>
+      </article>
+      <!-- Allarmi -->
+      <article class="card">
+        <div class="card-media">
+          <img src="https://images.unsplash.com/photo-1593950623955-1f3764f2b001?q=80&w=1200" alt="Tastierino impianto di allarme"/>
+        </div>
+        <div class="card-body">
+          <h3>Allarmi</h3>
+          <p>Sistemi antintrusione integrati, sensori e controllo da smartphone.</p>
+          <div class="mini"><span class="chip">Perimetrale</span><span class="chip">Volumetrico</span><span class="chip">Sirene</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Divider parallax -->
+  <div class="divider" style="background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600');" role="img" aria-label="Campo fotovoltaico"></div>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="slider">
+      <div class="slides">
+        <img src="https://drive.google.com/uc?export=view&id=1-U0YVUtuqNA9ke9XefuMt73H34IdhvA2" alt="Portfolio 1">
+        <img src="https://drive.google.com/uc?export=view&id=11dkJNvByq_te-ySxyr0glgHcE0qIJsh5" alt="Portfolio 2">
+        <img src="https://drive.google.com/uc?export=view&id=12l6f-UE1vWsL925Zj_rZDc_S2SUi5yTZ" alt="Portfolio 3">
+        <img src="https://drive.google.com/uc?export=view&id=13nR2AUpvN5u_Z0FMCIazagUnSJ7WzMkD" alt="Portfolio 4">
+        <img src="https://drive.google.com/uc?export=view&id=191vVOSNys-7NMLTg7fYBkgI_09MdF1Vs" alt="Portfolio 5">
+        <img src="https://drive.google.com/uc?export=view&id=1ExqBovMbUQ4YCKawomAchd0PPOLxe4-o" alt="Portfolio 6">
+        <img src="https://drive.google.com/uc?export=view&id=1JDIErJTyBV5OBPqC75eAfPiPPuhIzNGy" alt="Portfolio 7">
+        <img src="https://drive.google.com/uc?export=view&id=1LQG2GOwz9YKDNOe2DjOGJwEcUM1wzPpz" alt="Portfolio 8">
+        <img src="https://drive.google.com/uc?export=view&id=1N0swPI5epEDOuBXk8VoZVPT7SfXHNNPB" alt="Portfolio 9">
+        <img src="https://drive.google.com/uc?export=view&id=1Qy9FyMG2vUnv1TAh0ZmEu1uRDHwSAR4t" alt="Portfolio 10">
+        <img src="https://drive.google.com/uc?export=view&id=1Wli1qZWGKnU8xfDlQ9YLZYciG03d0a5h" alt="Portfolio 11">
+        <img src="https://drive.google.com/uc?export=view&id=1YoWr0NwEfLaHPaXONyQMCVagWh6a_vJW" alt="Portfolio 12">
+        <img src="https://drive.google.com/uc?export=view&id=1_DUZ3CIkSUiYDoRH8GibXnbdh5vcFE5f" alt="Portfolio 13">
+        <img src="https://drive.google.com/uc?export=view&id=1_FZJXjJjMGrvi5Mb1l8xM0wS1zQjPmCi" alt="Portfolio 14">
+        <img src="https://drive.google.com/uc?export=view&id=1_hjO_afvmWwdfUHn-qigJlYGzuke-6KA" alt="Portfolio 15">
+        <img src="https://drive.google.com/uc?export=view&id=1ijjYKtYOquP8EcycwKrHTtv0UcPSQSSM" alt="Portfolio 16">
+        <img src="https://drive.google.com/uc?export=view&id=1ksGWZByHRjnhoIHetYlChn1IFCBea7gS" alt="Portfolio 17">
+        <img src="https://drive.google.com/uc?export=view&id=1p-EZj103tIdd3tRTVP6W3UNIK0w4UXxu" alt="Portfolio 18">
+        <img src="https://drive.google.com/uc?export=view&id=1xgJUT7TzGZ_qrCYkH2ouPXBZZi1Z6e88" alt="Portfolio 19">
+        <img src="https://drive.google.com/uc?export=view&id=1yjEZWJfosnKm7ulWR4CwdqJ5EJreFSyk" alt="Portfolio 20">
+        <img src="https://drive.google.com/uc?export=view&id=1zKrsmLXCZ1yf7krMKDHgBu-mQfOmDV2k" alt="Portfolio 21">
+      </div>
+    </div>
+  </section>
+
+  <!-- Slider styles (già inclusi nel <style> principale) e script slider -->
+  <script>
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    let index = 0;
+    function showNextSlide() {
+      index = (index + 1) % images.length;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+    setInterval(showNextSlide, 3000); // 3 secondi
+  </script>
+
+  <!-- Recensioni -->
+  <section id="recensioni" aria-label="Recensioni clienti">
+    <h2 class="section-title">Recensioni</h2>
+    <div class="reviews">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>Installazione fotovoltaico impeccabile. Produzione come da preventivo, squadra puntuale.</p>
+        <small>— Cliente residenziale, Lucca</small>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>Adeguamento impianto industriale eseguito in tempi stretti, ottima documentazione.</p>
+        <small>— Azienda manifatturiera, Pisa</small>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>Allarme e videosorveglianza integrati, controllo da app comodissimo.</p>
+        <small>— Villetta, Versilia</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chi siamo -->
+  <section id="chi-siamo" aria-label="Chi siamo">
+    <h2 class="section-title">Chi siamo</h2>
+    <p class="section-sub">Affianchiamo privati e aziende con progettazione e installazione certificate, con attenzione a efficienza e sostenibilità.</p>
+    <p>Operiamo in tutta la Toscana con team qualificati e fornitori selezionati. Ogni progetto nasce da un sopralluogo tecnico e da una consulenza trasparente.</p>
+  </section>
+
+  <!-- Contatti -->
+  <section id="contatti" aria-label="Contattaci">
+    <h2 class="section-title">Richiedi un preventivo</h2>
+    <p class="section-sub">Compila il form e allega foto dell’impianto o del sito di installazione: rispondiamo rapidamente.</p>
+    <div class="contact">
+      <form class="form" id="quoteForm">
+        <div class="row">
+          <div>
+            <label for="name">Nome e cognome</label>
+            <input id="name" name="name" required placeholder="Mario Rossi" />
+          </div>
+          <div>
+            <label for="phone">Telefono</label>
+            <input id="phone" name="phone" required placeholder="+39 ..." />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="nome@dominio.it" />
+          </div>
+          <div>
+            <label for="service">Servizio</label>
+            <select id="service" name="service">
+              <option>Fotovoltaico</option>
+              <option>Impianti elettrici</option>
+              <option>Domotica</option>
+              <option>Videosorveglianza</option>
+              <option>Allarmi</option>
+            </select>
+          </div>
+        </div>
+        <label for="message">Descrizione</label>
+        <textarea id="message" name="message" placeholder="Raccontaci cosa ti serve, tempi, luogo..."></textarea>
+
+        <label for="photos">Allega foto dell’impianto/sito</label>
+        <input id="photos" name="photos" type="file" accept="image/*" multiple />
+        <p class="note">Suggerimento: più foto = preventivo più accurato.</p>
+
+        <div class="cta-row" style="justify-content:flex-start">
+          <button type="submit" class="btn">Invia richiesta</button>
+          <a class="btn btn-outline" id="whatsappBtn" href="#" target="_blank" rel="noopener">Invia su WhatsApp</a>
+          <a class="btn btn-outline" id="emailBtn" href="#">Invia via Email</a>
+        </div>
+      </form>
+
+      <aside class="contact-card">
+        <h3 style="margin-top:0">Contatti</h3>
+        <ul class="contact-list">
+          <li><strong>Telefono:</strong> <a href="tel:+393335044709">+39 333 504 4709</a></li>
+          <li><strong>Email:</strong> <a href="mailto:info@life.it">info@life.it</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/393335044709" target="_blank" rel="noopener">Chatta su WhatsApp</a></li>
+          <li><strong>Indirizzo:</strong> Toscana • Italia</li>
+          <li><strong>Orari:</strong> Lun–Ven 9:00–18:00</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> L.I.F.E – Impianti e Tecnologie • P.IVA 02189330101 • <a href="#">Privacy</a> • <a href="#">Cookie</a>
+  </footer>
+
+  <!-- Cookie banner -->
+  <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookie">
+    <span>Usiamo cookie tecnici per migliorare l’esperienza. Continuando accetti la nostra policy.</span>
+    <div class="cta-row" style="margin:0">
+      <button class="btn btn-outline" id="cookieAccept">Accetta</button>
+    </div>
+  </div>
+
+  <script>
+    // Header scroll
+    const hdr=document.getElementById('hdr');
+    const onScroll=()=>hdr.classList.toggle('scrolled', window.scrollY>20);
+    document.addEventListener('scroll', onScroll); onScroll();
+
+    // Reveal on scroll
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show')}})
+    },{threshold:.2});
+    document.querySelectorAll('.card').forEach(el=>observer.observe(el));
+
+    // Year
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // Cookie banner
+    const ck=document.getElementById('cookie');
+    const btnCk=document.getElementById('cookieAccept');
+    if(localStorage.getItem('cookieAccepted')) ck.remove();
+    btnCk.addEventListener('click',()=>{localStorage.setItem('cookieAccepted','1'); ck.remove();});
+
+    // Form quick actions
+    const WA_PHONE = '393335044709';
+    const EMAIL_TO = 'info@life.it';
+
+    function buildMessage(){
+      const n=document.getElementById('name').value.trim();
+      const p=document.getElementById('phone').value.trim();
+      const e=document.getElementById('email').value.trim();
+      const s=document.getElementById('service').value;
+      const m=document.getElementById('message').value.trim();
+      return `Richiesta preventivo%0A%0ANome: ${encodeURIComponent(n)}%0ATel: ${encodeURIComponent(p)}%0AEmail: ${encodeURIComponent(e)}%0AServizio: ${encodeURIComponent(s)}%0ADettagli: ${encodeURIComponent(m)}`;
+    }
+
+    document.getElementById('whatsappBtn').addEventListener('click', (ev)=>{
+      ev.preventDefault();
+      const url=`https://wa.me/${WA_PHONE}?text=${buildMessage()}`;
+      window.open(url,'_blank');
+    });
+
+    document.getElementById('emailBtn').addEventListener('click',(ev)=>{
+      ev.preventDefault();
+      const subject=encodeURIComponent('Richiesta preventivo dal sito');
+      const body=buildMessage().replace(/%0A/g, '\n');
+      window.location.href=`mailto:${EMAIL_TO}?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById('quoteForm').addEventListener('submit',(ev)=>{
+      ev.preventDefault();
+      document.getElementById('whatsappBtn').click(); // default: invia su WhatsApp
+    });
+
+    // Lingua (stub IT/EN)
+    document.getElementById('langToggle').addEventListener('click',()=>alert('Versione EN in preparazione. Possiamo tradurre i testi su richiesta.'));
+  </script>
+</body>
+</html>
