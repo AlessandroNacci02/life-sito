@@ -9,17 +9,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#00C853" />
-
   <style>
     :root{
-      --primary:#00C853;
-      --accent:#00B0FF;
+      --primary:#00C853; /* green energia */
+      --accent:#00B0FF; /* blue innovazione */
       --bg:#F9FBF9;
       --text:#1C1C1C;
       --muted:#6B7280;
       --card:#FFFFFF;
       --line:#e5e7eb;
       --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --shadow-strong:0 20px 50px rgba(0,0,0,0.18);
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -43,9 +43,9 @@
     .cta-head{margin-left:14px;padding:8px 14px;border-radius:999px;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--primary),var(--accent));box-shadow:0 6px 18px rgba(0,0,0,.18)}
     .lang{margin-left:10px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.9rem;background:#fff}
 
-    /* Hero */
+    /* Hero (immagine) */
     .hero{position:relative;height:100vh;display:grid;place-items:center;text-align:center;color:#fff}
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .hero-bg{position:absolute;inset:0;background:url("img/hero.jpg") center/cover no-repeat;z-index:-2}
     .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.45));z-index:-1}
     .hero h1{font-size:clamp(32px,5vw,64px);margin:0 0 10px 0;font-weight:800}
     .hero p{font-size:clamp(16px,2.2vw,22px);opacity:.95;max-width:900px;margin:0 auto}
@@ -80,53 +80,23 @@
     /* Divider parallax */
     .divider{height:320px;background-attachment:fixed;background-position:center;background-size:cover;border-radius:16px;margin:60px 24px}
 
-    /* Portfolio slider con sfondo blur (zoom minimo) */
-    .slider {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: auto;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    /* Portfolio slider con sfondo blur e foreground ridotto */
+    .slider{
+      position:relative;width:100%;max-width:900px;margin:auto;overflow:hidden;border-radius:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
     }
-    .slides {
-      display: flex;
-      transition: transform 0.6s ease-in-out;
+    .slides{display:flex;transition:transform .6s ease-in-out}
+    .slide{
+      position:relative;min-width:100%;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000;
     }
-    .slide {
-      position: relative;
-      flex: 0 0 100%;
-      height: 420px; /* desktop */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+    .slide .bg{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      filter:blur(18px) brightness(0.9);
+      transform:scale(1.03);
     }
-    .slide .bg {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: blur(20px) brightness(0.7);
-      transform: scale(1.005); /* zoom ancora più ridotto */
-      z-index: 0;
-    }
-    .slide .fg {
-      position: relative;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      z-index: 1;
-    }
-    @media (max-width: 1024px) {
-      .slide { height: 320px; }
-    }
-    @media (max-width: 600px) {
-      .slide { height: 220px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .slides { transition: none; }
+    .slide .fg{
+      position:relative;z-index:1;max-width:85%;max-height:70vh;width:auto;height:auto;border-radius:12px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.35);
     }
 
     /* Reviews */
@@ -155,6 +125,8 @@
     @media (max-width:960px){
       .contact{grid-template-columns:1fr}
       header nav{display:none}
+      .slide{min-height:52vh}
+      .slide .fg{max-width:95%;max-height:56vh}
     }
   </style>
 </head>
@@ -162,7 +134,7 @@
   <!-- Header -->
   <header id="hdr">
     <div class="brand">
-      <!-- Logo SVG -->
+      <!-- Logo provvisorio SVG -->
       <svg viewBox="0 0 64 64" aria-hidden="true">
         <defs>
           <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -189,9 +161,7 @@
 
   <!-- Hero -->
   <section class="hero" id="home" aria-label="Intro">
-    <video autoplay muted loop playsinline>
-      <source src="https://cdn.coverr.co/videos/coverr-solar-panels-9714/1080p.mp4" type="video/mp4"/>
-    </video>
+    <div class="hero-bg"></div>
     <div>
       <h1>Energia. Sicurezza. Innovazione.</h1>
       <p>Impianti elettrici civili e industriali, fotovoltaico, domotica, videosorveglianza e allarmi in tutta la Toscana.</p>
@@ -271,10 +241,11 @@
   <div class="divider" style="background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600');" role="img" aria-label="Campo fotovoltaico"></div>
 
   <!-- Portfolio -->
-  <section id="portfolio">
-    <h2>Portfolio</h2>
+  <section id="portfolio" aria-label="Portfolio lavori">
+    <h2 class="section-title" style="text-align:center">Portfolio</h2>
     <div class="slider">
-      <div class="slides">
+      <div class="slides" id="slides">
+        <!-- 21 slide con bg sfocato e fg ridotto -->
         <div class="slide"><img class="bg" src="img/portfolio1.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio1.jpg" alt="Portfolio 1"></div>
         <div class="slide"><img class="bg" src="img/portfolio2.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio2.jpg" alt="Portfolio 2"></div>
         <div class="slide"><img class="bg" src="img/portfolio3.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio3.jpg" alt="Portfolio 3"></div>
@@ -455,15 +426,14 @@
     // Lingua (stub IT/EN)
     document.getElementById('langToggle').addEventListener('click',()=>alert('Versione EN in preparazione. Possiamo tradurre i testi su richiesta.'));
 
-    // Slider autoplay (conta le .slide)
-    const slidesTrack = document.querySelector('.slides');
-    const slideItems = document.querySelectorAll('.slides .slide');
-    let slideIndex = 0;
-    function showNextSlide() {
-      slideIndex = (slideIndex + 1) % slideItems.length;
-      slidesTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
-    }
-    setInterval(showNextSlide, 3000); // 3 secondi
+    // Slider autoplay (21 slide)
+    const track = document.getElementById('slides');
+    const slideEls = Array.from(document.querySelectorAll('.slides .slide'));
+    let index = 0;
+    function update(){ track.style.transform = `translateX(-${index*100}%)`; }
+    function next(){ index = (index + 1) % slideEls.length; update(); }
+    setInterval(next, 4000); // 4s per slide
+    update();
   </script>
 </body>
 </html>
