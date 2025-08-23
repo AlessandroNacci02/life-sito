@@ -3,16 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>L.I.F.E – Impianti elettrici, Fotovoltaico, Domotica in Toscana</title>
-  <meta name="description" content="Impianti elettrici civili e industriali, fotovoltaico, domotica, videosorveglianza, allarmi e impianti di condizionamento. Soluzioni su misura a Lucca e in tutta la Toscana." />
+  <title>L.I.F.E – Impianti elettrici, Fotovoltaico, Domotica, Condizionamento in Toscana</title>
+  <meta name="description" content="Impianti elettrici civili e industriali, fotovoltaico, domotica, videosorveglianza, allarmi e condizionamento. Soluzioni su misura a Lucca e in tutta la Toscana. Richiedi un preventivo gratuito!" />
+  <meta name="keywords" content="impianti elettrici, fotovoltaico, domotica, condizionamento, videosorveglianza, allarmi, Lucca, Toscana, installazione, manutenzione, climatizzazione, sicurezza, energia, smart home, preventivo" />
+  <meta name="author" content="L.I.F.E Impianti e Tecnologie" />
+  <link rel="canonical" href="https://www.life-impianti.it/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
   <meta name="theme-color" content="#00C853" />
+  <meta property="og:title" content="L.I.F.E – Impianti elettrici, Fotovoltaico, Domotica, Condizionamento in Toscana" />
+  <meta property="og:description" content="Impianti elettrici civili e industriali, fotovoltaico, domotica, videosorveglianza, allarmi e condizionamento. Soluzioni su misura a Lucca e in tutta la Toscana." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.life-impianti.it/" />
+  <meta property="og:image" content="img/hero.jpg" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root{
-      --primary:#00C853; /* green energia */
-      --accent:#00B0FF; /* blue innovazione */
+      --primary:#00C853;
+      --accent:#00B0FF;
       --bg:#F9FBF9;
       --text:#1C1C1C;
       --muted:#6B7280;
@@ -20,14 +29,28 @@
       --line:#e5e7eb;
       --shadow:0 10px 30px rgba(0,0,0,0.08);
       --shadow-strong:0 20px 50px rgba(0,0,0,0.18);
+      --faq-bg: #f1f8f5;
+      --faq-border: #00C853;
+      --faq-icon: #00B0FF;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
-    body{font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    /* Sostituisci la regola body con questa */
+body {
+  font-family: Montserrat,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background: linear-gradient(120deg, #f1fdf6 0%, #e6f7fb 100%);
+  color: var(--text);
+  overflow-x: hidden;
+}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-
-    /* Header */
+    html { font-size: 16px; }
+    body { line-height: 1.6; }
+    h1,h2,h3,h4,h5,h6 { line-height: 1.2; }
+    h1, .section-title { font-size: 2.2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.15rem; }
+      /* Header */
     header{
       position:fixed;inset:0 0 auto 0;z-index:1000;
       display:flex;align-items:center;justify-content:space-between;
@@ -43,32 +66,30 @@
     .cta-head{margin-left:14px;padding:8px 14px;border-radius:999px;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--primary),var(--accent));box-shadow:0 6px 18px rgba(0,0,0,.18)}
     .lang{margin-left:10px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.9rem;background:#fff}
 
-    /* Hero (immagine) */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
-}
+    /* Hamburger */
+    .hamburger{display:none;flex-direction:column;gap:4px;width:32px;height:32px;justify-content:center;align-items:center;background:none;border:none;cursor:pointer;}
+    .hamburger span{display:block;width:22px;height:3px;background:var(--primary);border-radius:2px;transition:.3s}
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url("img/hero.jpg") center/cover no-repeat;
-  z-index: -2;
-}
+    /* Mobile nav */
+    .mobile-nav{
+      display:none;position:fixed;top:0;right:0;height:100vh;width:260px;background:#fff;box-shadow:-2px 0 16px rgba(0,0,0,.08);z-index:2000;
+      flex-direction:column;padding:32px 24px;gap:18px;transform:translateX(100%);transition:transform .3s;
+    }
+    .mobile-nav.open{display:flex;transform:translateX(0);}
+    .mobile-nav a{margin:0 0 18px 0;font-weight:700;font-size:1.1rem;}
+    .mobile-nav .close{align-self:flex-end;font-size:2rem;background:none;border:none;color:var(--primary);cursor:pointer;}
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.45));
-  z-index: -1;
-}
-
+    /* Hero */
+    .hero{
+      position:relative;
+      height:100vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:#fff;
+      background: url('img/hero.jpg') center center/cover no-repeat;
+    }
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.45));z-index:-1}
     .hero h1{font-size:clamp(32px,5vw,64px);margin:0 0 10px 0;font-weight:800}
     .hero p{font-size:clamp(16px,2.2vw,22px);opacity:.95;max-width:900px;margin:0 auto}
     .cta-row{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
@@ -86,40 +107,183 @@
     .section-title{font-size:32px;margin:0 0 8px 0}
     .section-sub{color:var(--muted);margin:0 0 28px 0}
 
-    /* Services */
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transform:translateY(24px);opacity:0;transition:transform .6s ease, opacity .6s ease}
-    .card.show{transform:translateY(0);opacity:1}
-    .card-media{height:180px;overflow:hidden}
-    .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-    .card:hover .card-media img{transform:scale(1.08)}
-    .card-body{padding:16px 18px}
-    .card h3{margin:0 0 6px 0;color:var(--accent)}
-    .card p{margin:0 0 12px 0;color:#374151}
-    .mini{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{font-size:.82rem;padding:6px 10px;border-radius:999px;background:#F1F5F9;color:#0f172a}
+    /* Migliora la sezione servizi: centratura, spacing, card più moderne */
+#servizi {
+  text-align: center;
+  padding-top: 90px;
+  padding-bottom: 70px;
+}
+#servizi .section-title {
+  font-size: 2.3rem;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+#servizi .section-sub {
+  font-size: 1.13rem;
+  margin-bottom: 38px;
+}
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px 22px;
+  margin-top: 10px;
+}
+.card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,200,83,0.08), 0 1.5px 8px rgba(0,176,255,0.07);
+  overflow: hidden;
+  width: 320px;
+  min-height: 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: transform .18s, box-shadow .18s;
+  margin-bottom: 0;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.025);
+  box-shadow: 0 16px 40px rgba(0,200,83,0.13), 0 4px 18px rgba(0,176,255,0.10);
+}
+.card-media {
+  height: 170px;
+  overflow: hidden;
+  border-bottom: 1.5px solid #e5e7eb;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s cubic-bezier(.77,0,.18,1);
+}
+.card:hover .card-media img {
+  transform: scale(1.08) rotate(-1deg);
+}
+.card-body {
+  padding: 20px 18px 18px 18px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.card h3 {
+  margin: 0 0 8px 0;
+  color: var(--primary);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.card p {
+  margin: 0 0 14px 0;
+  color: #374151;
+  font-size: 1.01rem;
+}
+.mini {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.chip {
+  font-size: .85rem;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#e6f7fb 0%,#f1fdf6 100%);
+  color: #0f172a;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  border: 1px solid #e0f2f1;
+}
+@media (max-width: 1100px) {
+  .services { gap: 22px 10px; }
+  .card { width: 95vw; max-width: 340px; }
+}
+@media (max-width: 700px) {
+  #servizi { padding-top: 60px; padding-bottom: 36px; }
+  .services { gap: 18px 0; }
+  .card { min-height: 340px; }
+  .card-media { height: 120px; }
+}
 
-    /* Divider parallax */
-    .divider{height:320px;background-attachment:fixed;background-position:center;background-size:cover;border-radius:16px;margin:60px 24px}
+/* Sostituisci la regola .divider con questa versione migliorata */
+.divider {
+  height: 260px;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  border-radius: 16px;
+  margin: 40px 24px;
+  position: relative;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+}
+.divider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,rgba(0,0,0,0.18),rgba(0,0,0,0.22));
+  border-radius: 16px;
+}
+@media (max-width:700px) {
+  .divider {
+    height: 140px;
+    margin: 24px 8px;
+  }
+}
 
-    /* Portfolio slider con sfondo blur e foreground ridotto */
-    .slider{
-      position:relative;width:100%;max-width:900px;margin:auto;overflow:hidden;border-radius:16px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    /* Portfolio slider with blur effect - doubled size */
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
-    .slides{display:flex;transition:transform .6s ease-in-out}
-    .slide{
-      position:relative;min-width:100%;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000;
+    .slides {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(.77,0,.18,1);
+      will-change: transform;
     }
-    .slide .bg{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-      filter:blur(18px) brightness(0.9);
-      transform:scale(1.03);
+    .slide-img-bg {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
     }
-    .slide .fg{
-      position:relative;z-index:1;max-width:85%;max-height:70vh;width:auto;height:auto;border-radius:12px;
-      box-shadow:0 12px 30px rgba(0,0,0,0.35);
+    .slide-img-bg .slide-blur {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      filter: blur(18px) brightness(0.8);
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
     }
+    .slide-img-bg .slide-main {
+      position: relative;
+      z-index: 2;
+      max-height: 360px;
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+      object-fit: contain;
+      background: rgba(255,255,255,0.15);
+    }
+    .slider-arrow{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(255,255,255,0.85);border:none;border-radius:50%;width:44px;height:44px;cursor:pointer;
+      font-size:2rem;color:var(--primary);box-shadow:0 2px 8px rgba(0,0,0,.12);z-index:2;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .slider-arrow:focus{outline:2px solid var(--accent);}
+    .slider-arrow.left{left:12px;}
+    .slider-arrow.right{right:12px;}
 
     /* Reviews */
     .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
@@ -137,6 +301,7 @@
     .contact-card{background:#fff;padding:18px;border-radius:16px;box-shadow:var(--shadow)}
     .contact-list{list-style:none;padding:0;margin:0}
     .contact-list li{margin-bottom:10px}
+    .form .error{color:#d32f2f;font-size:.95em;margin:6px 0 0 0;}
 
     /* Footer + cookie */
     footer{background:#ffffff;padding:32px 24px;border-top:1px solid var(--line);color:#6b7280;text-align:center}
@@ -147,17 +312,165 @@
     @media (max-width:960px){
       .contact{grid-template-columns:1fr}
       header nav{display:none}
-      .slide{min-height:52vh}
-      .slide .fg{max-width:95%;max-height:56vh}
+      .hamburger{display:flex;}
+      .mobile-nav{display:flex;}
+      .tile{flex-basis:280px}
+      .tile img{height:200px}
+      .slider{max-width:98vw;}
+      .slide-img-bg .slide-main{max-width:98vw;}
+      .slide-img-bg{height:340px;}
+      .slide-img-bg .slide-main{max-height:260px;}
     }
+    @media (max-width:600px){
+      section{padding:48px 8px;}
+      .divider{margin:32px 8px;}
+      .slide-img-bg .slide-main{max-width:98vw;}
+      .slide-img-bg{height:200px;}
+      .slide-img-bg .slide-main{max-height:120px;}
+    }
+    .slider { position:relative; overflow:hidden; max-width:700px; margin:32px auto; }
+    .slides { display:flex; transition:transform 0.5s cubic-bezier(.77,0,.18,1); }
+    .slide-img-bg { min-width:100%; position:relative; display:flex; align-items:center; justify-content:center; }
+    .slide-blur { position:absolute; left:0; top:0; width:100%; height:100%; filter:blur(12px) brightness(0.8); object-fit:cover; z-index:0; }
+    .slide-main { position:relative; z-index:1; max-width:90%; max-height:400px; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.12); }
+    .slider-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.8); border:none; font-size:2rem; padding:0 16px; cursor:pointer; border-radius:50%; z-index:2; }
+    .slider-arrow.left { left:8px; }
+    .slider-arrow.right { right:8px; }
+    @media (max-width:700px) {
+      .slide-main { max-width:98vw; max-height:220px; }
+      .slider { max-width:100vw; }
+    }
+    /* Miglioramento stile FAQ */
+.faq-section {
+  background: var(--faq-bg);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 48px 24px;
+  margin-top: 48px;
+}
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 700px;
+}
+.faq-list li {
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,200,83,0.06);
+  overflow: hidden;
+  border-left: 4px solid var(--faq-border);
+  transition: box-shadow .2s;
+}
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: left;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 18px 48px 18px 20px;
+  cursor: pointer;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background .2s;
+  position: relative;
+}
+.faq-q:hover, .faq-q:focus {
+  background: #f4fff7;
+}
+.faq-icon {
+  font-size: 1.3em;
+  margin-left: 16px;
+  color: var(--faq-icon);
+  transition: transform .3s cubic-bezier(.77,0,.18,1);
+  display: inline-block;
+}
+.faq-q[aria-expanded="true"] .faq-icon {
+  transform: rotate(90deg);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8fefb;
+  color: #333;
+  font-size: 1.05rem;
+  padding: 0 24px;
+  transition: max-height .4s cubic-bezier(.77,0,.18,1), padding .3s;
+  border-top: 1px solid #e0f7ef;
+}
+.faq-a.open {
+  padding: 18px 24px;
+  max-height: 200px;
+  transition: max-height .5s cubic-bezier(.77,0,.18,1), padding .3s;
+}
+@media (max-width:600px){
+  .faq-section { padding: 32px 4px; }
+  .faq-q { font-size: 1rem; padding: 14px 40px 14px 12px; }
+  .faq-a.open { padding: 14px 12px; }
+}
+.review-slider {
+  position: relative;
+  max-width: 540px;
+  margin: 0 auto;
+  min-height: 180px;
+}
+.review-slider .review {
+  display: none;
+  opacity: 0;
+  transition: opacity .5s;
+  position: absolute;
+  left: 0; top: 0; width: 100%;
+}
+.review-slider .review.active {
+  display: block;
+  opacity: 1;
+  position: relative;
+}
+.review-slider-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto;
+  max-width: 700px;
+  position: relative;
+}
+.review-slider {
+  position: relative;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 24px;
+  min-height: 180px;
+}
+.review-slider-outer .slider-arrow {
+  position: static;
+  transform: none;
+  margin: 0 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.10);
+  background: #fff;
+  color: var(--primary);
+  transition: background .2s;
+}
+.review-slider-outer .slider-arrow:hover,
+.review-slider-outer .slider-arrow:focus {
+  background: var(--primary);
+  color: #fff;
+}
+@media (max-width:700px) {
+  .review-slider-outer { max-width: 98vw; }
+  .review-slider { margin: 0 4px; }
+}
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header id="hdr">
+  <header id="hdr" role="banner">
     <div class="brand">
-      <!-- Logo provvisorio SVG -->
-      <svg viewBox="0 0 64 64" aria-hidden="true">
+      <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
         <defs>
           <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#00C853"/><stop offset="1" stop-color="#00B0FF"/>
@@ -168,43 +481,52 @@
       </svg>
       <span>L.I.F.E</span>
     </div>
-    <nav>
+    <nav aria-label="Menu principale">
+      <a href="#servizi" tabindex="0">Servizi</a>
+      <a href="#portfolio" tabindex="0">Portfolio</a>
+      <a href="#recensioni" tabindex="0">Recensioni</a>
+      <a href="#chi-siamo" tabindex="0">Chi siamo</a>
+      <a href="#faq" tabindex="0">FAQ</a>
+      <a href="#contatti" tabindex="0">Contatti</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-controls="mobileNav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a class="cta-head" href="tel:+393335044709" aria-label="Chiama L.I.F.E">Chiama</a>
+      <button class="lang" id="langToggle" aria-label="Cambia lingua">IT / EN</button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+      <button class="close" id="closeNav" aria-label="Chiudi menu">&times;</button>
       <a href="#servizi">Servizi</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#recensioni">Recensioni</a>
       <a href="#chi-siamo">Chi siamo</a>
+      <a href="#faq">FAQ</a>
       <a href="#contatti">Contatti</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px">
-      <a class="cta-head" href="tel:+393335044709">Chiama</a>
-      <button class="lang" id="langToggle" aria-label="Cambia lingua">IT / EN</button>
-    </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero" id="home" aria-label="Intro">
-    <div class="hero-bg"></div>
     <div>
       <h1>Energia. Sicurezza. Innovazione.</h1>
-      <p>Impianti elettrici civili e industriali, fotovoltaico, domotica, videosorveglianza, allarmi e impianti di condizionamento in tutta la Toscana.</p>
+      <p>Impianti elettrici civili e industriali, fotovoltaico, domotica, condizionamento, videosorveglianza e allarmi in tutta la Toscana.</p>
       <div class="cta-row">
-        <a class="btn" href="#contatti">Richiedi preventivo</a>
-        <a class="btn btn-outline" href="tel:+393335044709">Chiama ora</a>
-        <a class="btn btn-outline" href="https://wa.me/393335044709?text=Ciao%20LIFE%2C%20vorrei%20un%20preventivo" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn btn-outline" href="mailto:info@life.it?subject=Richiesta%20preventivo">Email</a>
+        <a class="btn" href="#contatti" aria-label="Richiedi preventivo">Richiedi preventivo</a>
+        <a class="btn btn-outline" href="tel:+393335044709" aria-label="Chiama ora">Chiama ora</a>
+        <a class="btn btn-outline" href="https://wa.me/393335044709?text=Ciao%20LIFE%2C%20vorrei%20un%20preventivo" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">WhatsApp</a>
+        <a class="btn btn-outline" href="mailto:info@life.it?subject=Richiesta%20preventivo" aria-label="Contattaci via Email">Email</a>
       </div>
     </div>
   </section>
 
-  <!-- Servizi -->
   <section id="servizi" aria-label="I nostri servizi">
-    <h2 class="section-title">I nostri servizi</h2>
-    <p class="section-sub">Soluzioni su misura per casa e azienda. Interventi rapidi, certificati e garantiti.</p>
+    <h2 class="section-title" style="text-align:center;">I nostri servizi</h2>
+    <p class="section-sub" style="text-align:center;">Soluzioni su misura per casa e azienda. Interventi rapidi, certificati e garantiti.</p>
     <div class="services">
-      <!-- Fotovoltaico -->
-      <article class="card">
+      <article class="card" tabindex="0" aria-label="Servizio: Fotovoltaico residenziale e industriale">
         <div class="card-media">
-          <img src="https://images.unsplash.com/photo-1597094737760-9e3c6c6b1f3d?q=80&w=1200" alt="Impianto fotovoltaico su tetto residenziale"/>
+          <img src="https://images.unsplash.com/photo-1597094737760-9e3c6c6b1f3d?q=80&w=1200" alt="Impianto fotovoltaico su tetto residenziale" loading="lazy"/>
         </div>
         <div class="card-body">
           <h3>Fotovoltaico residenziale e industriale</h3>
@@ -212,10 +534,9 @@
           <div class="mini"><span class="chip">Residenziale</span><span class="chip">Industriale</span><span class="chip">Storage</span></div>
         </div>
       </article>
-      <!-- Impianti elettrici -->
-      <article class="card">
+      <article class="card" tabindex="0" aria-label="Servizio: Impianti elettrici civili e industriali">
         <div class="card-media">
-          <img src="https://images.unsplash.com/photo-1581090700227-1e7e8f9f3d5b?q=80&w=1200" alt="Quadro elettrico professionale"/>
+          <img src="https://images.unsplash.com/photo-1581090700227-1e7e8f9f3d5b?q=80&w=1200" alt="Quadro elettrico professionale" loading="lazy"/>
         </div>
         <div class="card-body">
           <h3>Impianti elettrici civili e industriali</h3>
@@ -223,10 +544,19 @@
           <div class="mini"><span class="chip">Civile</span><span class="chip">Industriale</span><span class="chip">Certificazioni</span></div>
         </div>
       </article>
-      <!-- Domotica -->
-      <article class="card">
+      <article class="card" tabindex="0" aria-label="Servizio: Impianti di condizionamento">
         <div class="card-media">
-          <img src="https://images.unsplash.com/photo-1581092334607-cd6f6e8f9f3d?q=80&w=1200" alt="App di controllo domotico"/>
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200" alt="Impianto di condizionamento moderno" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <h3>Impianti di condizionamento</h3>
+          <p>Installazione, manutenzione e assistenza di climatizzatori per abitazioni, uffici e industrie.</p>
+          <div class="mini"><span class="chip">Residenziale</span><span class="chip">Commerciale</span><span class="chip">Industriale</span></div>
+        </div>
+      </article>
+      <article class="card" tabindex="0" aria-label="Servizio: Domotica">
+        <div class="card-media">
+          <img src="https://images.unsplash.com/photo-1581092334607-cd6f6e8f9f3d?q=80&w=1200" alt="App di controllo domotico" loading="lazy"/>
         </div>
         <div class="card-body">
           <h3>Domotica</h3>
@@ -234,10 +564,9 @@
           <div class="mini"><span class="chip">Smart home</span><span class="chip">Integrazioni</span><span class="chip">App</span></div>
         </div>
       </article>
-      <!-- Videosorveglianza -->
-      <article class="card">
+      <article class="card" tabindex="0" aria-label="Servizio: Videosorveglianza">
         <div class="card-media">
-          <img src="https://images.unsplash.com/photo-1545259741-2ea3ebf51fc3?q=80&w=1200" alt="Telecamera di sicurezza esterna"/>
+          <img src="https://images.unsplash.com/photo-1545259741-2ea3ebf51fc3?q=80&w=1200" alt="Telecamera di sicurezza esterna" loading="lazy"/>
         </div>
         <div class="card-body">
           <h3>Videosorveglianza</h3>
@@ -245,10 +574,9 @@
           <div class="mini"><span class="chip">IP</span><span class="chip">Cloud</span><span class="chip">App</span></div>
         </div>
       </article>
-      <!-- Allarmi -->
-      <article class="card">
+      <article class="card" tabindex="0" aria-label="Servizio: Allarmi">
         <div class="card-media">
-          <img src="https://images.unsplash.com/photo-1593950623955-1f3764f2b001?q=80&w=1200" alt="Tastierino impianto di allarme"/>
+          <img src="https://images.unsplash.com/photo-1593950623955-1f3764f2b001?q=80&w=1200" alt="Tastierino impianto di allarme" loading="lazy"/>
         </div>
         <div class="card-body">
           <h3>Allarmi</h3>
@@ -256,132 +584,214 @@
           <div class="mini"><span class="chip">Perimetrale</span><span class="chip">Volumetrico</span><span class="chip">Sirene</span></div>
         </div>
       </article>
-      <!-- Impianti di condizionamento -->
-      <article class="card">
-        <div class="card-media">
-          <img src="https://images.unsplash.com/photo-1598300053650-8b9c6f8f9f3d?q=80&w=1200" alt="Installazione e manutenzione impianti di condizionamento a Lucca e in Toscana"/>
-        </div>
-        <div class="card-body">
-          <h3>Impianti di condizionamento</h3>
-          <p>Installazione, manutenzione e assistenza di sistemi di climatizzazione per ambienti civili e industriali.</p>
-          <div class="mini"><span class="chip">Residenziale</span><span class="chip">Industriale</span><span class="chip">Pompe di calore</span></div>
-        </div>
-      </article>
     </div>
   </section>
 
-  <!-- Divider parallax -->
-  <div class="divider" style="background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600');" role="img" aria-label="Campo fotovoltaico"></div>
+  <!-- Sostituisci la riga del divider con questa -->
+<div class="divider" style="background-image:url('img/sostenibilita.jpg');" role="img" aria-label="Sostenibilità"></div>
 
-  <!-- Portfolio -->
   <section id="portfolio" aria-label="Portfolio lavori">
-    <h2 class="section-title" style="text-align:center">Portfolio</h2>
-    <div class="slider">
+    <h2 class="section-title">Portfolio</h2>
+    <p class="section-sub">Alcuni dei nostri lavori realizzati in Toscana: impianti elettrici, fotovoltaico, domotica, condizionamento e sicurezza.</p>
+    <div class="slider" aria-label="Slider portfolio">
+      <button class="slider-arrow left" id="sliderPrev" aria-label="Precedente">&#8592;</button>
       <div class="slides" id="slides">
-        <!-- 21 slide con bg sfocato e fg ridotto -->
-        <div class="slide"><img class="bg" src="img/portfolio1.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio1.jpg" alt="Portfolio 1"></div>
-        <div class="slide"><img class="bg" src="img/portfolio2.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio2.jpg" alt="Portfolio 2"></div>
-        <div class="slide"><img class="bg" src="img/portfolio3.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio3.jpg" alt="Portfolio 3"></div>
-        <div class="slide"><img class="bg" src="img/portfolio4.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio4.jpg" alt="Portfolio 4"></div>
-        <div class="slide"><img class="bg" src="img/portfolio5.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio5.jpg" alt="Portfolio 5"></div>
-        <div class="slide"><img class="bg" src="img/portfolio6.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio6.jpg" alt="Portfolio 6"></div>
-        <div class="slide"><img class="bg" src="img/portfolio7.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio7.jpg" alt="Portfolio 7"></div>
-        <div class="slide"><img class="bg" src="img/portfolio8.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio8.jpg" alt="Portfolio 8"></div>
-        <div class="slide"><img class="bg" src="img/portfolio9.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio9.jpg" alt="Portfolio 9"></div>
-        <div class="slide"><img class="bg" src="img/portfolio10.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio10.jpg" alt="Portfolio 10"></div>
-        <div class="slide"><img class="bg" src="img/portfolio11.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio11.jpg" alt="Portfolio 11"></div>
-        <div class="slide"><img class="bg" src="img/portfolio12.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio12.jpg" alt="Portfolio 12"></div>
-        <div class="slide"><img class="bg" src="img/portfolio13.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio13.jpg" alt="Portfolio 13"></div>
-        <div class="slide"><img class="bg" src="img/portfolio14.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio14.jpg" alt="Portfolio 14"></div>
-        <div class="slide"><img class="bg" src="img/portfolio15.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio15.jpg" alt="Portfolio 15"></div>
-        <div class="slide"><img class="bg" src="img/portfolio16.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio16.jpg" alt="Portfolio 16"></div>
-        <div class="slide"><img class="bg" src="img/portfolio17.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio17.jpg" alt="Portfolio 17"></div>
-        <div class="slide"><img class="bg" src="img/portfolio18.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio18.jpg" alt="Portfolio 18"></div>
-        <div class="slide"><img class="bg" src="img/portfolio19.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio19.jpg" alt="Portfolio 19"></div>
-        <div class="slide"><img class="bg" src="img/portfolio20.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio20.jpg" alt="Portfolio 20"></div>
-        <div class="slide"><img class="bg" src="img/portfolio21.jpg" alt="" aria-hidden="true"><img class="fg" src="img/portfolio21.jpg" alt="Portfolio 21"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio1.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio1.jpg" alt="Portfolio 1" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio2.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio2.jpg" alt="Portfolio 2" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio3.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio3.jpg" alt="Portfolio 3" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio4.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio4.jpg" alt="Portfolio 4" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio5.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio5.jpg" alt="Portfolio 5" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio6.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio6.jpg" alt="Portfolio 6" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio7.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio7.jpg" alt="Portfolio 7" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio8.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio8.jpg" alt="Portfolio 8" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio9.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio9.jpg" alt="Portfolio 9" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio10.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio10.jpg" alt="Portfolio 10" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio11.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio11.jpg" alt="Portfolio 11" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio12.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio12.jpg" alt="Portfolio 12" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio13.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio13.jpg" alt="Portfolio 13" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio14.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio14.jpg" alt="Portfolio 14" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio15.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio15.jpg" alt="Portfolio 15" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio16.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio16.jpg" alt="Portfolio 16" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio17.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio17.jpg" alt="Portfolio 17" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio18.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio18.jpg" alt="Portfolio 18" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio19.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio19.jpg" alt="Portfolio 19" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio20.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio20.jpg" alt="Portfolio 20" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio21.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio21.jpg" alt="Portfolio 21" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio22.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio22.jpg" alt="Portfolio 22" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio23.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio23.jpg" alt="Portfolio 23" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio24.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio24.jpg" alt="Portfolio 24" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio25.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio25.jpg" alt="Portfolio 25" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio26.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio26.jpg" alt="Portfolio 26" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio27.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio27.jpg" alt="Portfolio 27" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio28.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio28.jpg" alt="Portfolio 28" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio29.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio29.jpg" alt="Portfolio 29" loading="lazy"></div>
+        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio30.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio30.jpg" alt="Portfolio 30" loading="lazy"></div>
       </div>
+      <button class="slider-arrow right" id="sliderNext" aria-label="Successivo">&#8594;</button>
     </div>
   </section>
 
-  <!-- Recensioni -->
-  <section id="recensioni" aria-label="Recensioni clienti">
-    <h2 class="section-title">Recensioni</h2>
-    <div class="reviews">
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>Installazione fotovoltaico impeccabile. Produzione come da preventivo, squadra puntuale.</p>
-        <small>— Cliente residenziale, Lucca</small>
+<section id="recensioni" aria-label="Recensioni clienti">
+  <h2 class="section-title">Recensioni</h2>
+  <div class="review-slider-outer">
+    <button class="slider-arrow left" id="reviewPrev" aria-label="Recensione precedente">&#8592;</button>
+    <div class="review-slider" id="reviewSlider" aria-live="polite">
+      <div class="review active" tabindex="0">
+        <div class="stars" aria-label="5 stelle">★★★★★</div>
+        <p>
+          Ho installato un impianto fotovoltaico da 6kW con LIFE a giugno 2024. Lavoro pulito, personale gentile e disponibile a spiegare ogni dettaglio. Produzione come da preventivo.
+        </p>
+        <small>— Marco B., Capannori (LU), 06/2024</small>
       </div>
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>Adeguamento impianto industriale eseguito in tempi stretti, ottima documentazione.</p>
-        <small>— Azienda manifatturiera, Pisa</small>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="4 stelle">★★★★☆</div>
+        <p>
+          Installazione dell’impianto elettrico in casa nuova. Tutto bene, solo un piccolo ritardo sulla consegna dei materiali. Tecnici comunque molto disponibili.
+        </p>
+        <small>— Giulia F., Altopascio, 04/2024</small>
       </div>
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>Allarme e videosorveglianza integrati, controllo da app comodissimo.</p>
-        <small>— Villetta, Versilia</small>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="5 stelle">★★★★★</div>
+        <p>
+          Avevo bisogno di adeguare l’impianto elettrico del mio laboratorio. Sono intervenuti in pochi giorni e mi hanno lasciato tutta la documentazione. Consigliati!
+        </p>
+        <small>— Silvia R., Pisa, 03/2024</small>
+      </div>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="3 stelle">★★★☆☆</div>
+        <p>
+          Ho fatto installare un condizionatore. Lavoro ok, ma avrei preferito più scelta sui modelli. Prezzo nella media.
+        </p>
+        <small>— Luca M., Lucca, 02/2024</small>
+      </div>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="5 stelle">★★★★★</div>
+        <p>
+          Ho fatto installare allarme e videosorveglianza. Ora controllo tutto dall’app, anche quando sono fuori casa. Ottimo servizio post vendita.
+        </p>
+        <small>— Andrea L., Viareggio, 11/2023</small>
+      </div>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="4 stelle">★★★★☆</div>
+        <p>
+          Personale molto cortese e disponibile. L’impianto domotico funziona bene, ma l’app ha richiesto un aggiornamento iniziale.
+        </p>
+        <small>— Francesca T., Pisa, 10/2023</small>
+      </div>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="5 stelle">★★★★★</div>
+        <p>
+          Ottima esperienza per la sostituzione del quadro elettrico in azienda. Tutto certificato e a norma.
+        </p>
+        <small>— Roberto S., Lucca, 09/2023</small>
+      </div>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="4 stelle">★★★★☆</div>
+        <p>
+          Installazione fotovoltaico su tetto condominiale. Buona consulenza e assistenza, tempi rispettati.
+        </p>
+        <small>— Elisa D., Montecatini, 07/2023</small>
+      </div>
+      <div class="review" tabindex="0">
+        <div class="stars" aria-label="3 stelle">★★★☆☆</div>
+        <p>
+          Lavoro svolto correttamente, ma la comunicazione via email potrebbe essere più rapida.
+        </p>
+        <small>— Paolo V., Massarosa, 05/2023</small>
       </div>
     </div>
-  </section>
+    <button class="slider-arrow right" id="reviewNext" aria-label="Recensione successiva">&#8594;</button>
+  </div>
+</section>
 
-  <!-- Chi siamo -->
   <section id="chi-siamo" aria-label="Chi siamo">
     <h2 class="section-title">Chi siamo</h2>
-    <p class="section-sub">Affianchiamo privati e aziende con progettazione e installazione certificate, con attenzione a efficienza e sostenibilità.</p>
-    <p>Operiamo in tutta la Toscana con team qualificati e fornitori selezionati. Ogni progetto nasce da un sopralluogo tecnico e da una consulenza trasparente.</p>
+    <p class="section-sub">Affianchiamo privati e aziende con progettazione e installazione certificate, con attenzione a efficienza, sostenibilità e comfort climatico.</p>
+    <p>Operiamo in tutta la Toscana con team qualificati e fornitori selezionati. Ogni progetto nasce da un sopralluogo tecnico e da una consulenza trasparente. Siamo specializzati anche in impianti di condizionamento per ogni esigenza.</p>
   </section>
 
-  <!-- Contatti -->
+  <section class="faq-section" id="faq" aria-label="Domande frequenti">
+    <h2 class="section-title">Domande frequenti</h2>
+    <ul class="faq-list">
+      <li>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq1" tabindex="0">
+          Fate preventivi gratuiti?
+          <span class="faq-icon" aria-hidden="true">&#9654;</span>
+        </button>
+        <div class="faq-a" id="faq1">Sì, tutti i nostri preventivi sono gratuiti e senza impegno.</div>
+      </li>
+      <li>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq2" tabindex="0">
+          Installate anche impianti di condizionamento?
+          <span class="faq-icon" aria-hidden="true">&#9654;</span>
+        </button>
+        <div class="faq-a" id="faq2">Sì, siamo specializzati anche in climatizzazione per abitazioni, uffici e industrie.</div>
+      </li>
+      <li>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq3" tabindex="0">
+          Lavorate solo a Lucca?
+          <span class="faq-icon" aria-hidden="true">&#9654;</span>
+        </button>
+        <div class="faq-a" id="faq3">No, operiamo in tutta la Toscana e regioni limitrofe.</div>
+      </li>
+      <li>
+        <button class="faq-q" aria-expanded="false" aria-controls="faq4" tabindex="0">
+          Fornite assistenza post-vendita?
+          <span class="faq-icon" aria-hidden="true">&#9654;</span>
+        </button>
+        <div class="faq-a" id="faq4">Sì, garantiamo assistenza e manutenzione su tutti i nostri impianti.</div>
+      </li>
+    </ul>
+  </section>
+
   <section id="contatti" aria-label="Contattaci">
     <h2 class="section-title">Richiedi un preventivo</h2>
-    <p class="section-sub">Compila il form e allega foto dell’impianto o del sito di installazione: rispondiamo rapidamente.</p>
+    <p class="section-sub">Compila il form e allega foto dell’impianto o del sito di installazione: rispondiamo rapidamente. Siamo a disposizione anche per impianti di condizionamento.</p>
     <div class="contact">
-      <form class="form" id="quoteForm">
+      <form class="form" id="quoteForm" novalidate autocomplete="on" aria-label="Modulo richiesta preventivo">
         <div class="row">
           <div>
             <label for="name">Nome e cognome</label>
-            <input id="name" name="name" required placeholder="Mario Rossi" />
+            <input id="name" name="name" required placeholder="Mario Rossi" autocomplete="name" aria-required="true" />
+            <div class="error" id="errName" aria-live="polite"></div>
           </div>
           <div>
             <label for="phone">Telefono</label>
-            <input id="phone" name="phone" required placeholder="+39 ..." />
+            <input id="phone" name="phone" required placeholder="+39 ..." autocomplete="tel" aria-required="true" />
+            <div class="error" id="errPhone" aria-live="polite"></div>
           </div>
         </div>
         <div class="row">
           <div>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="nome@dominio.it" />
+            <input id="email" name="email" type="email" placeholder="nome@dominio.it" autocomplete="email" />
+            <div class="error" id="errEmail" aria-live="polite"></div>
           </div>
           <div>
             <label for="service">Servizio</label>
-            <select id="service" name="service">
+            <select id="service" name="service" aria-label="Seleziona servizio">
               <option>Fotovoltaico</option>
               <option>Impianti elettrici</option>
+              <option>Condizionamento</option>
               <option>Domotica</option>
               <option>Videosorveglianza</option>
               <option>Allarmi</option>
-              <option>Impianti di condizionamento</option>
             </select>
           </div>
         </div>
         <label for="message">Descrizione</label>
-        <textarea id="message" name="message" placeholder="Raccontaci cosa ti serve, tempi, luogo..."></textarea>
-
+        <textarea id="message" name="message" placeholder="Raccontaci cosa ti serve, tempi, luogo..." aria-label="Descrizione richiesta"></textarea>
         <label for="photos">Allega foto dell’impianto/sito</label>
-        <input id="photos" name="photos" type="file" accept="image/*" multiple />
+        <input id="photos" name="photos" type="file" accept="image/*" multiple aria-label="Allega foto" />
         <p class="note">Suggerimento: più foto = preventivo più accurato.</p>
-
         <div class="cta-row" style="justify-content:flex-start">
-          <button type="submit" class="btn">Invia richiesta</button>
-          <a class="btn btn-outline" id="whatsappBtn" href="#" target="_blank" rel="noopener">Invia su WhatsApp</a>
-          <a class="btn btn-outline" id="emailBtn" href="#">Invia via Email</a>
+          <button type="submit" class="btn" aria-label="Invia richiesta">Invia richiesta</button>
+          <a class="btn btn-outline" id="whatsappBtn" href="#" target="_blank" rel="noopener" aria-label="Invia su WhatsApp">Invia su WhatsApp</a>
+          <a class="btn btn-outline" id="emailBtn" href="#" aria-label="Invia via Email">Invia via Email</a>
         </div>
       </form>
-
-      <aside class="contact-card">
-        <h3 style="margin-top:0">Contatti</h3>
+      <aside class="contact-card" aria-label="Contatti rapidi">
+        <h3 style="margin-top:0">Contatti <span class="privacy-badge" aria-label="Dati protetti">GDPR</span></h3>
         <ul class="contact-list">
           <li><strong>Telefono:</strong> <a href="tel:+393335044709">+39 333 504 4709</a></li>
           <li><strong>Email:</strong> <a href="mailto:info@life.it">info@life.it</a></li>
@@ -394,42 +804,90 @@
   </section>
 
   <footer>
-    © <span id="year"></span> L.I.F.E – Impianti e Tecnologie • P.IVA 02189330101 • <a href="#">Privacy</a> • <a href="#">Cookie</a>
+    © <span id="year"></span> L.I.F.E – Impianti e Tecnologie • P.IVA 02189330101 • 
+    <a href="privacy.html" rel="noopener" aria-label="Privacy Policy">Privacy</a> • 
+    <a href="cookie.html" rel="noopener" aria-label="Cookie Policy">Cookie</a>
   </footer>
 
-  <!-- Cookie banner -->
   <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookie">
-    <span>Usiamo cookie tecnici per migliorare l’esperienza. Continuando accetti la nostra policy.</span>
+    <span>Usiamo cookie tecnici per migliorare l’esperienza. Continuando accetti la nostra <a href="cookie.html" target="_blank" rel="noopener">cookie policy</a>.</span>
     <div class="cta-row" style="margin:0">
-      <button class="btn btn-outline" id="cookieAccept">Accetta</button>
+      <button class="btn btn-outline" id="cookieAccept" aria-label="Accetta cookie">Accetta</button>
     </div>
   </div>
 
   <script>
-    // Header scroll
     const hdr=document.getElementById('hdr');
     const onScroll=()=>hdr.classList.toggle('scrolled', window.scrollY>20);
     document.addEventListener('scroll', onScroll); onScroll();
-
-    // Reveal on scroll
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeNav = document.getElementById('closeNav');
+    function checkMobileMenu() {
+      if(window.innerWidth < 960){
+        hamburger.style.display = 'flex';
+        hamburger.setAttribute('aria-expanded', mobileNav.classList.contains('open') ? 'true' : 'false');
+      } else {
+        hamburger.style.display = 'none';
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    }
+    window.addEventListener('resize', checkMobileMenu);
+    checkMobileMenu();
+    hamburger.addEventListener('click',()=>{
+      mobileNav.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+    });
+    closeNav.addEventListener('click',()=>{
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+    mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }));
     const observer=new IntersectionObserver((entries)=>{
       entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show')}})
     },{threshold:.2});
     document.querySelectorAll('.card').forEach(el=>observer.observe(el));
-
-    // Year
     document.getElementById('year').textContent=new Date().getFullYear();
-
-    // Cookie banner
     const ck=document.getElementById('cookie');
     const btnCk=document.getElementById('cookieAccept');
     if(localStorage.getItem('cookieAccepted')) ck.remove();
-    btnCk.addEventListener('click',()=>{localStorage.setItem('cookieAccepted','1'); ck.remove();});
-
-    // Form quick actions
+    btnCk.addEventListener('click',()=>{
+      localStorage.setItem('cookieAccepted','1');
+      ck.remove();
+    });
+    const slides = document.getElementById('slides');
+    const slideItems = slides.querySelectorAll('.slide-img-bg');
+    let index = 0, autoSlide;
+    function showSlide(i){
+      index = (i+slideItems.length)%slideItems.length;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+    function nextSlide(){ showSlide(index+1);}
+    function prevSlide(){ showSlide(index-1);}
+    document.getElementById('sliderNext').addEventListener('click',()=>{nextSlide();resetAuto();});
+    document.getElementById('sliderPrev').addEventListener('click',()=>{prevSlide();resetAuto();});
+    function resetAuto(){
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextSlide, 3000);
+    }
+    autoSlide = setInterval(nextSlide, 3000);
+    let startX=0, isDown=false;
+    slides.addEventListener('touchstart',e=>{isDown=true;startX=e.touches[0].clientX;});
+    slides.addEventListener('touchmove',e=>{
+      if(!isDown) return;
+      let dx = e.touches[0].clientX - startX;
+      if(Math.abs(dx)>50){
+        if(dx>0) prevSlide(); else nextSlide();
+        isDown=false;resetAuto();
+      }
+    });
+    slides.addEventListener('touchend',()=>{isDown=false;});
     const WA_PHONE = '393335044709';
     const EMAIL_TO = 'info@life.it';
-
     function buildMessage(){
       const n=document.getElementById('name').value.trim();
       const p=document.getElementById('phone').value.trim();
@@ -438,36 +896,86 @@
       const m=document.getElementById('message').value.trim();
       return `Richiesta preventivo%0A%0ANome: ${encodeURIComponent(n)}%0ATel: ${encodeURIComponent(p)}%0AEmail: ${encodeURIComponent(e)}%0AServizio: ${encodeURIComponent(s)}%0ADettagli: ${encodeURIComponent(m)}`;
     }
-
     document.getElementById('whatsappBtn').addEventListener('click', (ev)=>{
       ev.preventDefault();
+      if(!validateForm()) return;
       const url=`https://wa.me/${WA_PHONE}?text=${buildMessage()}`;
       window.open(url,'_blank');
     });
-
     document.getElementById('emailBtn').addEventListener('click',(ev)=>{
       ev.preventDefault();
+      if(!validateForm()) return;
       const subject=encodeURIComponent('Richiesta preventivo dal sito');
       const body=buildMessage().replace(/%0A/g, '\n');
       window.location.href=`mailto:${EMAIL_TO}?subject=${subject}&body=${body}`;
     });
-
     document.getElementById('quoteForm').addEventListener('submit',(ev)=>{
       ev.preventDefault();
-      document.getElementById('whatsappBtn').click(); // default: invia su WhatsApp
+      if(validateForm()) document.getElementById('whatsappBtn').click();
     });
-
-    // Lingua (stub IT/EN)
+    function validateForm(){
+      let valid = true;
+      const name = document.getElementById('name');
+      const phone = document.getElementById('phone');
+      const email = document.getElementById('email');
+      document.getElementById('errName').textContent = '';
+      document.getElementById('errPhone').textContent = '';
+      document.getElementById('errEmail').textContent = '';
+      if(!name.value.trim()){document.getElementById('errName').textContent='Inserisci il nome.';valid=false;}
+      if(!phone.value.trim()){document.getElementById('errPhone').textContent='Inserisci il telefono.';valid=false;}
+      if(email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){document.getElementById('errEmail').textContent='Email non valida.';valid=false;}
+      return valid;
+    }
     document.getElementById('langToggle').addEventListener('click',()=>alert('Versione EN in preparazione. Possiamo tradurre i testi su richiesta.'));
+    document.querySelectorAll('.faq-q').forEach(btn=>{
+      btn.addEventListener('click', function(){
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        const answer = document.getElementById(this.getAttribute('aria-controls'));
+        if(answer){
+          answer.classList.toggle('open', !expanded);
+        }
+      });
+      btn.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+// Slider recensioni automatico con frecce e tempo 6s
+const reviewSlider = document.getElementById('reviewSlider');
+if (reviewSlider) {
+  const reviews = reviewSlider.querySelectorAll('.review');
+  const prevBtn = document.getElementById('reviewPrev');
+  const nextBtn = document.getElementById('reviewNext');
+  let current = 0;
+  let interval = null;
 
-    // Slider autoplay (21 slide)
-    const track = document.getElementById('slides');
-    const slideEls = Array.from(document.querySelectorAll('.slides .slide'));
-    let index = 0;
-    function update(){ track.style.transform = `translateX(-${index*100}%)`; }
-    function next(){ index = (index + 1) % slideEls.length; update(); }
-    setInterval(next, 4000); // 4s per slide
-    update();
+  function showReview(idx) {
+    reviews.forEach((r, i) => {
+      r.classList.toggle('active', i === idx);
+    });
+  }
+  function nextReview() {
+    current = (current + 1) % reviews.length;
+    showReview(current);
+  }
+  function prevReview() {
+    current = (current - 1 + reviews.length) % reviews.length;
+    showReview(current);
+  }
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextReview, 6000);
+  }
+
+  prevBtn.addEventListener('click', () => { prevReview(); resetInterval(); });
+  nextBtn.addEventListener('click', () => { nextReview(); resetInterval(); });
+
+  showReview(current);
+  interval = setInterval(nextReview, 6000);
+}
   </script>
 </body>
 </html>
