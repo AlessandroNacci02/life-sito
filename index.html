@@ -976,7 +976,41 @@
         }
       });
     });
+    // Slider recensioni automatico con frecce e tempo 6s
+</script>
   <!-- GESTIONE RECENSIONI -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const stars = Array.from(document.querySelectorAll('.star-label'));
+  const inputs = Array.from(document.querySelectorAll('input[name="revStars"]'));
+  const starValue = document.getElementById('starValue');
+  let selected = 0;
+
+  function updateStars(n) {
+    stars.forEach(star => {
+      star.classList.toggle('selected', parseInt(star.dataset.value) <= n);
+    });
+    starValue.textContent = n ? `${n} stelle` : '';
+  }
+
+  stars.forEach(star => {
+    star.addEventListener('mouseenter', () => updateStars(star.dataset.value));
+    star.addEventListener('mouseleave', () => updateStars(selected));
+    star.addEventListener('click', () => {
+      selected = parseInt(star.dataset.value);
+      updateStars(selected);
+      document.getElementById('star' + selected).checked = true;
+    });
+  });
+
+  inputs.forEach(input => {
+    input.addEventListener('change', () => {
+      selected = parseInt(input.value);
+      updateStars(selected);
+    });
+  });
+});
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const stars = Array.from(document.querySelectorAll('.star-label'));
