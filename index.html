@@ -35,22 +35,21 @@
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
-    /* Sostituisci la regola body con questa */
-body {
-  font-family: Montserrat,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background: linear-gradient(120deg, #f1fdf6 0%, #e6f7fb 100%);
-  color: var(--text);
-  overflow-x: hidden;
-}
+    body {
+      font-family: Montserrat,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background: linear-gradient(120deg, #f1fdf6 0%, #e6f7fb 100%);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     html { font-size: 16px; }
-    body { line-height: 1.6; }
     h1,h2,h3,h4,h5,h6 { line-height: 1.2; }
     h1, .section-title { font-size: 2.2rem; }
     h2 { font-size: 1.5rem; }
     h3 { font-size: 1.15rem; }
-      /* Header */
+    /* Header */
     header{
       position:fixed;inset:0 0 auto 0;z-index:1000;
       display:flex;align-items:center;justify-content:space-between;
@@ -108,128 +107,106 @@ body {
     .section-sub{color:var(--muted);margin:0 0 28px 0}
 
     /* Migliora la sezione servizi: centratura, spacing, card più moderne */
-#servizi {
-  text-align: center;
-  padding-top: 90px;
-  padding-bottom: 70px;
-}
-#servizi .section-title {
-  font-size: 2.3rem;
-  margin-bottom: 6px;
-  letter-spacing: 0.5px;
-}
-#servizi .section-sub {
-  font-size: 1.13rem;
-  margin-bottom: 38px;
-}
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 28px 22px;
-  margin-top: 10px;
-}
-.card {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0,200,83,0.08), 0 1.5px 8px rgba(0,176,255,0.07);
-  overflow: hidden;
-  width: 320px;
-  min-height: 410px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  transition: transform .18s, box-shadow .18s;
-  margin-bottom: 0;
-}
-.card:hover {
-  transform: translateY(-6px) scale(1.025);
-  box-shadow: 0 16px 40px rgba(0,200,83,0.13), 0 4px 18px rgba(0,176,255,0.10);
-}
-.card-media {
-  height: 170px;
-  overflow: hidden;
-  border-bottom: 1.5px solid #e5e7eb;
-}
-.card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .5s cubic-bezier(.77,0,.18,1);
-}
-.card:hover .card-media img {
-  transform: scale(1.08) rotate(-1deg);
-}
-.card-body {
-  padding: 20px 18px 18px 18px;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.card h3 {
-  margin: 0 0 8px 0;
-  color: var(--primary);
-  font-size: 1.18rem;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-.card p {
-  margin: 0 0 14px 0;
-  color: #374151;
-  font-size: 1.01rem;
-}
-.mini {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: auto;
-}
-.chip {
-  font-size: .85rem;
-  padding: 6px 13px;
-  border-radius: 999px;
-  background: linear-gradient(90deg,#e6f7fb 0%,#f1fdf6 100%);
-  color: #0f172a;
-  font-weight: 600;
-  letter-spacing: 0.1px;
-  border: 1px solid #e0f2f1;
-}
-@media (max-width: 1100px) {
-  .services { gap: 22px 10px; }
-  .card { width: 95vw; max-width: 340px; }
-}
-@media (max-width: 700px) {
-  #servizi { padding-top: 60px; padding-bottom: 36px; }
-  .services { gap: 18px 0; }
-  .card { min-height: 340px; }
-  .card-media { height: 120px; }
-}
-
-/* Sostituisci la regola .divider con questa versione migliorata */
-.divider {
-  height: 260px;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  border-radius: 16px;
-  margin: 40px 24px;
-  position: relative;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.10);
-}
-.divider::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom,rgba(0,0,0,0.18),rgba(0,0,0,0.22));
-  border-radius: 16px;
-}
-@media (max-width:700px) {
-  .divider {
-    height: 140px;
-    margin: 24px 8px;
-  }
-}
+    #servizi {
+      text-align: center;
+      padding-top: 90px;
+      padding-bottom: 70px;
+    }
+    #servizi .section-title {
+      font-size: 2.3rem;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    #servizi .section-sub {
+      font-size: 1.13rem;
+      margin-bottom: 38px;
+    }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px 22px;
+      margin-top: 10px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,200,83,0.08), 0 1.5px 8px rgba(0,176,255,0.07);
+      overflow: hidden;
+      width: 320px;
+      min-height: 410px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      transition: transform .18s, box-shadow .18s;
+      margin-bottom: 0;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 16px 40px rgba(0,200,83,0.13), 0 4px 18px rgba(0,176,255,0.10);
+    }
+    .card-media {
+      height: 170px;
+      overflow: hidden;
+      border-bottom: 1.5px solid #e5e7eb;
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s cubic-bezier(.77,0,.18,1);
+    }
+    .card:hover .card-media img {
+      transform: scale(1.08) rotate(-1deg);
+    }
+    .card-body {
+      padding: 20px 18px 18px 18px;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .card h3 {
+      margin: 0 0 8px 0;
+      color: var(--primary);
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      margin: 0 0 14px 0;
+      color: #374151;
+      font-size: 1.01rem;
+    }
+    .mini {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+    .chip {
+      font-size: .85rem;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: linear-gradient(90deg,#e6f7fb 0%,#f1fdf6 100%);
+      color: #0f172a;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      border: 1px solid #e0f2f1;
+    }
+    @media (max-width: 1100px) {
+      .services { gap: 22px 10px; }
+      .card { width: 95vw; max-width: 340px; }
+    }
+    @media (max-width: 700px) {
+      #servizi { padding-top: 60px; padding-bottom: 36px; }
+      .services { gap: 18px 0; }
+      .card { min-height: 340px; }
+      .card-media { height: 120px; }
+    }
 
     /* Portfolio slider with blur effect - doubled size */
     .slider {
@@ -341,131 +318,162 @@ body {
       .slider { max-width:100vw; }
     }
     /* Miglioramento stile FAQ */
-.faq-section {
-  background: var(--faq-bg);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-  padding: 48px 24px;
-  margin-top: 48px;
-}
-.faq-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 700px;
-}
-.faq-list li {
-  margin-bottom: 18px;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,200,83,0.06);
-  overflow: hidden;
-  border-left: 4px solid var(--faq-border);
-  transition: box-shadow .2s;
-}
-.faq-q {
-  width: 100%;
-  background: none;
-  border: none;
-  outline: none;
-  text-align: left;
-  font-size: 1.15rem;
-  font-weight: 700;
-  padding: 18px 48px 18px 20px;
-  cursor: pointer;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background .2s;
-  position: relative;
-}
-.faq-q:hover, .faq-q:focus {
-  background: #f4fff7;
-}
-.faq-icon {
-  font-size: 1.3em;
-  margin-left: 16px;
-  color: var(--faq-icon);
-  transition: transform .3s cubic-bezier(.77,0,.18,1);
-  display: inline-block;
-}
-.faq-q[aria-expanded="true"] .faq-icon {
-  transform: rotate(90deg);
-}
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  background: #f8fefb;
-  color: #333;
-  font-size: 1.05rem;
-  padding: 0 24px;
-  transition: max-height .4s cubic-bezier(.77,0,.18,1), padding .3s;
-  border-top: 1px solid #e0f7ef;
-}
-.faq-a.open {
-  padding: 18px 24px;
-  max-height: 200px;
-  transition: max-height .5s cubic-bezier(.77,0,.18,1), padding .3s;
-}
-@media (max-width:600px){
-  .faq-section { padding: 32px 4px; }
-  .faq-q { font-size: 1rem; padding: 14px 40px 14px 12px; }
-  .faq-a.open { padding: 14px 12px; }
-}
-.review-slider {
-  position: relative;
-  max-width: 540px;
-  margin: 0 auto;
-  min-height: 180px;
-}
-.review-slider .review {
-  display: none;
-  opacity: 0;
-  transition: opacity .5s;
-  position: absolute;
-  left: 0; top: 0; width: 100%;
-}
-.review-slider .review.active {
-  display: block;
-  opacity: 1;
-  position: relative;
-}
-.review-slider-outer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  margin: 0 auto;
-  max-width: 700px;
-  position: relative;
-}
-.review-slider {
-  position: relative;
-  max-width: 540px;
-  width: 100%;
-  margin: 0 24px;
-  min-height: 180px;
-}
-.review-slider-outer .slider-arrow {
-  position: static;
-  transform: none;
-  margin: 0 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.10);
-  background: #fff;
-  color: var(--primary);
-  transition: background .2s;
-}
-.review-slider-outer .slider-arrow:hover,
-.review-slider-outer .slider-arrow:focus {
-  background: var(--primary);
-  color: #fff;
-}
-@media (max-width:700px) {
-  .review-slider-outer { max-width: 98vw; }
-  .review-slider { margin: 0 4px; }
-}
+    .faq-section {
+      background: var(--faq-bg);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 48px 24px;
+      margin-top: 48px;
+    }
+    .faq-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+    .faq-list li {
+      margin-bottom: 18px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,200,83,0.06);
+      overflow: hidden;
+      border-left: 4px solid var(--faq-border);
+      transition: box-shadow .2s;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      outline: none;
+      text-align: left;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 18px 48px 18px 20px;
+      cursor: pointer;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .2s;
+      position: relative;
+    }
+    .faq-q:hover, .faq-q:focus {
+      background: #f4fff7;
+    }
+    .faq-icon {
+      font-size: 1.3em;
+      margin-left: 16px;
+      color: var(--faq-icon);
+      transition: transform .3s cubic-bezier(.77,0,.18,1);
+      display: inline-block;
+    }
+    .faq-q[aria-expanded="true"] .faq-icon {
+      transform: rotate(90deg);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      background: #f8fefb;
+      color: #333;
+      font-size: 1.05rem;
+      padding: 0 24px;
+      transition: max-height .4s cubic-bezier(.77,0,.18,1), padding .3s;
+      border-top: 1px solid #e0f7ef;
+    }
+    .faq-a.open {
+      padding: 18px 24px;
+      max-height: 200px;
+      transition: max-height .5s cubic-bezier(.77,0,.18,1), padding .3s;
+    }
+    @media (max-width:600px){
+      .faq-section { padding: 32px 4px; }
+      .faq-q { font-size: 1rem; padding: 14px 40px 14px 12px; }
+      .faq-a.open { padding: 14px 12px; }
+    }
+    .review-slider {
+      position: relative;
+      max-width: 540px;
+      margin: 0 auto;
+      min-height: 180px;
+    }
+    .review-slider .review {
+      display: none;
+      opacity: 0;
+      transition: opacity .5s;
+      position: absolute;
+      left: 0; top: 0; width: 100%;
+    }
+    .review-slider .review.active {
+      display: block;
+      opacity: 1;
+      position: relative;
+    }
+    .review-slider-outer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 0 auto;
+      max-width: 700px;
+      position: relative;
+    }
+    .review-slider {
+      position: relative;
+      max-width: 540px;
+      width: 100%;
+      margin: 0 24px;
+      min-height: 180px;
+    }
+    .review-slider-outer .slider-arrow {
+      position: static;
+      transform: none;
+      margin: 0 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.10);
+      background: #fff;
+      color: var(--primary);
+      transition: background .2s;
+    }
+    .review-slider-outer .slider-arrow:hover,
+    .review-slider-outer .slider-arrow:focus {
+      background: var(--primary);
+      color: #fff;
+    }
+    @media (max-width:700px) {
+      .review-slider-outer { max-width: 98vw; }
+      .review-slider { margin: 0 4px; }
+    }
+    /* CTA fissa mobile */
+    @media (max-width:700px) {
+      .cta-fixed {
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        z-index: 3000;
+        background: linear-gradient(90deg,#00C853,#00B0FF);
+        color: #fff;
+        text-align: center;
+        padding: 14px 0 12px 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        box-shadow: 0 -2px 18px rgba(0,0,0,0.10);
+      }
+      .cta-fixed a { color: #fff; text-decoration: none; }
+      body { padding-bottom: 56px; }
+    }
   </style>
+<style>
+  .star-label {
+    font-size: 2em;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: color .2s;
+    user-select: none;
+  }
+  .star-label.selected,
+  .star-label.hovered {
+    color: #F59E0B;
+    text-shadow: 0 1px 4px #ffe082;
+  }
+</style>
 </head>
 <body>
   <header id="hdr" role="banner">
@@ -529,7 +537,10 @@ body {
           <img src="https://images.unsplash.com/photo-1597094737760-9e3c6c6b1f3d?q=80&w=1200" alt="Impianto fotovoltaico su tetto residenziale" loading="lazy"/>
         </div>
         <div class="card-body">
-          <h3>Fotovoltaico residenziale e industriale</h3>
+          <h3>
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;"><path fill="#00C853" d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.07-7.07l-1.41 1.41M6.34 17.66l-1.41 1.41m12.02 0l-1.41-1.41M6.34 6.34L4.93 4.93"/><circle cx="12" cy="12" r="5" stroke="#00B0FF" stroke-width="2"/></svg>
+            Fotovoltaico residenziale e industriale
+          </h3>
           <p>Progettazione, installazione e monitoraggio. Massima resa e detrazioni.</p>
           <div class="mini"><span class="chip">Residenziale</span><span class="chip">Industriale</span><span class="chip">Storage</span></div>
         </div>
@@ -539,7 +550,10 @@ body {
           <img src="https://images.unsplash.com/photo-1581090700227-1e7e8f9f3d5b?q=80&w=1200" alt="Quadro elettrico professionale" loading="lazy"/>
         </div>
         <div class="card-body">
-          <h3>Impianti elettrici civili e industriali</h3>
+          <h3>
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#00B0FF" stroke-width="2"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke="#00C853" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#00C853"/></svg>
+            Impianti elettrici civili e industriali
+          </h3>
           <p>Nuove installazioni, adeguamenti e certificazioni per ogni ambiente.</p>
           <div class="mini"><span class="chip">Civile</span><span class="chip">Industriale</span><span class="chip">Certificazioni</span></div>
         </div>
@@ -549,7 +563,10 @@ body {
           <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200" alt="Impianto di condizionamento moderno" loading="lazy"/>
         </div>
         <div class="card-body">
-          <h3>Impianti di condizionamento</h3>
+          <h3>
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#00B0FF" stroke-width="2"/><path d="M8 17v2m8-2v2" stroke="#00C853" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#00C853"/></svg>
+            Impianti di condizionamento
+          </h3>
           <p>Installazione, manutenzione e assistenza di climatizzatori per abitazioni, uffici e industrie.</p>
           <div class="mini"><span class="chip">Residenziale</span><span class="chip">Commerciale</span><span class="chip">Industriale</span></div>
         </div>
@@ -559,7 +576,10 @@ body {
           <img src="https://images.unsplash.com/photo-1581092334607-cd6f6e8f9f3d?q=80&w=1200" alt="App di controllo domotico" loading="lazy"/>
         </div>
         <div class="card-body">
-          <h3>Domotica</h3>
+          <h3>
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#00B0FF" stroke-width="2"/><path d="M8 12h8" stroke="#00C853" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#00C853"/></svg>
+            Domotica
+          </h3>
           <p>Automazioni intelligenti per comfort, efficienza e sicurezza.</p>
           <div class="mini"><span class="chip">Smart home</span><span class="chip">Integrazioni</span><span class="chip">App</span></div>
         </div>
@@ -569,7 +589,10 @@ body {
           <img src="https://images.unsplash.com/photo-1545259741-2ea3ebf51fc3?q=80&w=1200" alt="Telecamera di sicurezza esterna" loading="lazy"/>
         </div>
         <div class="card-body">
-          <h3>Videosorveglianza</h3>
+          <h3>
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;"><rect x="3" y="7" width="18" height="10" rx="2" stroke="#00B0FF" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#00C853"/><path d="M17 7V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2" stroke="#00C853" stroke-width="2"/></svg>
+            Videosorveglianza
+          </h3>
           <p>Telecamere smart, registrazione continua e accesso remoto sicuro.</p>
           <div class="mini"><span class="chip">IP</span><span class="chip">Cloud</span><span class="chip">App</span></div>
         </div>
@@ -579,7 +602,10 @@ body {
           <img src="https://images.unsplash.com/photo-1593950623955-1f3764f2b001?q=80&w=1200" alt="Tastierino impianto di allarme" loading="lazy"/>
         </div>
         <div class="card-body">
-          <h3>Allarmi</h3>
+          <h3>
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#00B0FF" stroke-width="2"/><path d="M8 8l8 8M8 16l8-8" stroke="#00C853" stroke-width="2"/></svg>
+            Allarmi
+          </h3>
           <p>Sistemi antintrusione integrati, sensori e controllo da smartphone.</p>
           <div class="mini"><span class="chip">Perimetrale</span><span class="chip">Volumetrico</span><span class="chip">Sirene</span></div>
         </div>
@@ -587,127 +613,121 @@ body {
     </div>
   </section>
 
-  <!-- Sostituisci la riga del divider con questa -->
-<div class="divider" style="background-image:url('img/sostenibilita.jpg');" role="img" aria-label="Sostenibilità"></div>
-
-  <section id="portfolio" aria-label="Portfolio lavori">
-    <h2 class="section-title">Portfolio</h2>
-    <p class="section-sub">Alcuni dei nostri lavori realizzati in Toscana: impianti elettrici, fotovoltaico, domotica, condizionamento e sicurezza.</p>
-    <div class="slider" aria-label="Slider portfolio">
-      <button class="slider-arrow left" id="sliderPrev" aria-label="Precedente">&#8592;</button>
-      <div class="slides" id="slides">
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio1.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio1.jpg" alt="Portfolio 1" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio2.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio2.jpg" alt="Portfolio 2" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio3.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio3.jpg" alt="Portfolio 3" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio4.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio4.jpg" alt="Portfolio 4" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio5.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio5.jpg" alt="Portfolio 5" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio6.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio6.jpg" alt="Portfolio 6" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio7.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio7.jpg" alt="Portfolio 7" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio8.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio8.jpg" alt="Portfolio 8" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio9.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio9.jpg" alt="Portfolio 9" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio10.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio10.jpg" alt="Portfolio 10" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio11.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio11.jpg" alt="Portfolio 11" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio12.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio12.jpg" alt="Portfolio 12" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio13.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio13.jpg" alt="Portfolio 13" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio14.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio14.jpg" alt="Portfolio 14" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio15.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio15.jpg" alt="Portfolio 15" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio16.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio16.jpg" alt="Portfolio 16" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio17.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio17.jpg" alt="Portfolio 17" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio18.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio18.jpg" alt="Portfolio 18" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio19.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio19.jpg" alt="Portfolio 19" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio20.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio20.jpg" alt="Portfolio 20" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio21.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio21.jpg" alt="Portfolio 21" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio22.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio22.jpg" alt="Portfolio 22" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio23.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio23.jpg" alt="Portfolio 23" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio24.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio24.jpg" alt="Portfolio 24" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio25.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio25.jpg" alt="Portfolio 25" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio26.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio26.jpg" alt="Portfolio 26" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio27.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio27.jpg" alt="Portfolio 27" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio28.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio28.jpg" alt="Portfolio 28" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio29.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio29.jpg" alt="Portfolio 29" loading="lazy"></div>
-        <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio30.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio30.jpg" alt="Portfolio 30" loading="lazy"></div>
-      </div>
-      <button class="slider-arrow right" id="sliderNext" aria-label="Successivo">&#8594;</button>
+<section id="portfolio" aria-label="Portfolio lavori">
+  <h2 class="section-title">Portfolio</h2>
+  <p class="section-sub">Alcuni dei nostri lavori realizzati in Toscana: impianti elettrici, fotovoltaico, domotica, condizionamento e sicurezza.</p>
+  <div class="slider" aria-label="Slider portfolio">
+    <button class="slider-arrow left" id="sliderPrev" aria-label="Precedente">&#8592;</button>
+    <div class="slides" id="slides">
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio1.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio1.jpg" alt="Portfolio 1" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio2.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio2.jpg" alt="Portfolio 2" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio3.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio3.jpg" alt="Portfolio 3" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio4.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio4.jpg" alt="Portfolio 4" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio5.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio5.jpg" alt="Portfolio 5" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio6.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio6.jpg" alt="Portfolio 6" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio7.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio7.jpg" alt="Portfolio 7" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio8.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio8.jpg" alt="Portfolio 8" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio9.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio9.jpg" alt="Portfolio 9" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio10.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio10.jpg" alt="Portfolio 10" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio11.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio11.jpg" alt="Portfolio 11" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio12.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio12.jpg" alt="Portfolio 12" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio13.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio13.jpg" alt="Portfolio 13" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio14.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio14.jpg" alt="Portfolio 14" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio15.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio15.jpg" alt="Portfolio 15" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio16.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio16.jpg" alt="Portfolio 16" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio17.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio17.jpg" alt="Portfolio 17" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio18.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio18.jpg" alt="Portfolio 18" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio19.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio19.jpg" alt="Portfolio 19" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio20.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio20.jpg" alt="Portfolio 20" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio21.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio21.jpg" alt="Portfolio 21" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio22.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio22.jpg" alt="Portfolio 22" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio23.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio23.jpg" alt="Portfolio 23" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio24.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio24.jpg" alt="Portfolio 24" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio25.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio25.jpg" alt="Portfolio 25" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio26.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio26.jpg" alt="Portfolio 26" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio27.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio27.jpg" alt="Portfolio 27" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio28.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio28.jpg" alt="Portfolio 28" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio29.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio29.jpg" alt="Portfolio 29" loading="lazy"></div>
+      <div class="slide-img-bg"><img class="slide-blur" src="img/portfolio30.jpg" alt="" aria-hidden="true" loading="lazy"/><img class="slide-main" src="img/portfolio30.jpg" alt="Portfolio 30" loading="lazy"></div>
     </div>
-  </section>
+    <button class="slider-arrow right" id="sliderNext" aria-label="Successivo">&#8594;</button>
+  </div>
+</section>
+
+<!-- Sostituisci il blocco recensioni nel <section id="recensioni"> con questo -->
 
 <section id="recensioni" aria-label="Recensioni clienti">
   <h2 class="section-title">Recensioni</h2>
   <div class="review-slider-outer">
     <button class="slider-arrow left" id="reviewPrev" aria-label="Recensione precedente">&#8592;</button>
     <div class="review-slider" id="reviewSlider" aria-live="polite">
-      <div class="review active" tabindex="0">
-        <div class="stars" aria-label="5 stelle">★★★★★</div>
-        <p>
-          Ho installato un impianto fotovoltaico da 6kW con LIFE a giugno 2024. Lavoro pulito, personale gentile e disponibile a spiegare ogni dettaglio. Produzione come da preventivo.
+      <div class="review active" id="noReviewsMsg" tabindex="0" style="text-align:center;">
+        <p style="font-size:1.15em;color:#00B0FF;margin:32px 0;">
+          Nessuna recensione presente.<br>
+          <strong>Lascia la nostra prima recensione!</strong>
         </p>
-        <small>— Marco B., Capannori (LU), 06/2024</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="4 stelle">★★★★☆</div>
-        <p>
-          Installazione dell’impianto elettrico in casa nuova. Tutto bene, solo un piccolo ritardo sulla consegna dei materiali. Tecnici comunque molto disponibili.
-        </p>
-        <small>— Giulia F., Altopascio, 04/2024</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="5 stelle">★★★★★</div>
-        <p>
-          Avevo bisogno di adeguare l’impianto elettrico del mio laboratorio. Sono intervenuti in pochi giorni e mi hanno lasciato tutta la documentazione. Consigliati!
-        </p>
-        <small>— Silvia R., Pisa, 03/2024</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="3 stelle">★★★☆☆</div>
-        <p>
-          Ho fatto installare un condizionatore. Lavoro ok, ma avrei preferito più scelta sui modelli. Prezzo nella media.
-        </p>
-        <small>— Luca M., Lucca, 02/2024</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="5 stelle">★★★★★</div>
-        <p>
-          Ho fatto installare allarme e videosorveglianza. Ora controllo tutto dall’app, anche quando sono fuori casa. Ottimo servizio post vendita.
-        </p>
-        <small>— Andrea L., Viareggio, 11/2023</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="4 stelle">★★★★☆</div>
-        <p>
-          Personale molto cortese e disponibile. L’impianto domotico funziona bene, ma l’app ha richiesto un aggiornamento iniziale.
-        </p>
-        <small>— Francesca T., Pisa, 10/2023</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="5 stelle">★★★★★</div>
-        <p>
-          Ottima esperienza per la sostituzione del quadro elettrico in azienda. Tutto certificato e a norma.
-        </p>
-        <small>— Roberto S., Lucca, 09/2023</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="4 stelle">★★★★☆</div>
-        <p>
-          Installazione fotovoltaico su tetto condominiale. Buona consulenza e assistenza, tempi rispettati.
-        </p>
-        <small>— Elisa D., Montecatini, 07/2023</small>
-      </div>
-      <div class="review" tabindex="0">
-        <div class="stars" aria-label="3 stelle">★★★☆☆</div>
-        <p>
-          Lavoro svolto correttamente, ma la comunicazione via email potrebbe essere più rapida.
-        </p>
-        <small>— Paolo V., Massarosa, 05/2023</small>
       </div>
     </div>
     <button class="slider-arrow right" id="reviewNext" aria-label="Recensione successiva">&#8594;</button>
+  </div>
+  <div id="review-form-section" style="margin:36px auto 0 auto;max-width:540px;background:#fff;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,0.07);padding:24px;">
+    <h3 style="margin-top:0;color:#00C853;">Lascia una recensione</h3>
+    <form id="reviewForm" autocomplete="off" aria-label="Lascia una recensione">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <input type="text" id="revName" name="revName" placeholder="Nome" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
+        <input type="text" id="revSurname" name="revSurname" placeholder="Cognome" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
+        <input type="text" id="revCity" name="revCity" placeholder="Città" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
+        <input type="text" id="revProvince" name="revProvince" placeholder="Provincia (es: LU)" maxlength="2" required style="flex:0 0 80px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;text-transform:uppercase;">
+      </div>
+      <div style="margin:14px 0 8px 0;">
+        <label for="revStars" style="font-weight:600;">Stelle:</label>
+        <span id="starInputs" style="margin-left:8px;display:inline-flex;gap:2px;flex-direction:row;">
+          <input type="radio" name="revStars" id="star1" value="1" required style="display:none;">
+          <label for="star1" class="star-label" data-value="1" aria-label="1 stella">★</label>
+          <input type="radio" name="revStars" id="star2" value="2" style="display:none;">
+          <label for="star2" class="star-label" data-value="2" aria-label="2 stelle">★</label>
+          <input type="radio" name="revStars" id="star3" value="3" style="display:none;">
+          <label for="star3" class="star-label" data-value="3" aria-label="3 stelle">★</label>
+          <input type="radio" name="revStars" id="star4" value="4" style="display:none;">
+          <label for="star4" class="star-label" data-value="4" aria-label="4 stelle">★</label>
+          <input type="radio" name="revStars" id="star5" value="5" style="display:none;">
+          <label for="star5" class="star-label" data-value="5" aria-label="5 stelle">★</label>
+        </span>
+        <span id="starValue" style="margin-left:10px;color:#00B0FF;font-weight:600;"></span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <textarea id="revText" name="revText" required placeholder="Descrivi l’intervento svolto..." style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;min-height:60px;"></textarea>
+      </div>
+      <div style="margin-bottom:10px;">
+        <label for="revDate" style="font-weight:600;">Data intervento:</label>
+        <input type="month" id="revDate" name="revDate" required style="padding:8px;border-radius:8px;border:1px solid #e5e7eb;">
+      </div>
+      <div style="margin-bottom:10px;">
+<div style="margin-bottom:10px;">
+  <input type="password" id="adminPass" name="adminPass" placeholder="Password admin per cancellare" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
+</div>
+        <button type="submit" class="btn" style="width:100%;">Invia recensione</button>
+      </div>
+      <div id="revFormMsg" style="color:#00C853;font-weight:600;margin-top:6px;display:none;"></div>
+    </form>
   </div>
 </section>
 
   <section id="chi-siamo" aria-label="Chi siamo">
     <h2 class="section-title">Chi siamo</h2>
     <p class="section-sub">Affianchiamo privati e aziende con progettazione e installazione certificate, con attenzione a efficienza, sostenibilità e comfort climatico.</p>
-    <p>Operiamo in tutta la Toscana con team qualificati e fornitori selezionati. Ogni progetto nasce da un sopralluogo tecnico e da una consulenza trasparente. Siamo specializzati anche in impianti di condizionamento per ogni esigenza.</p>
+    <div style="display:flex;align-items:center;gap:32px;flex-wrap:wrap;">
+      <img src="img/team.jpg" alt="Il team LIFE Impianti" style="max-width:220px;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,0.10);margin-bottom:18px;">
+      <div>
+        <p>Operiamo in tutta la Toscana con team qualificati e fornitori selezionati. Ogni progetto nasce da un sopralluogo tecnico e da una consulenza trasparente. Siamo specializzati anche in impianti di condizionamento per ogni esigenza.</p>
+        <ul style="padding-left:18px;margin:0 0 0 0;">
+          <li>✔️ Esperienza ventennale</li>
+          <li>✔️ Certificazioni e sicurezza</li>
+          <li>✔️ Soluzioni su misura</li>
+          <li>✔️ Assistenza post-vendita</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="faq-section" id="faq" aria-label="Domande frequenti">
@@ -804,10 +824,26 @@ body {
   </section>
 
   <footer>
+    <div style="margin-bottom:10px;">
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" style="margin:0 8px;">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#e6f7fb"/><path d="M15.5 8.5h-2V7.5c0-.41.34-.75.75-.75h1.25V5h-2.25A2.25 2.25 0 0 0 11 7.25v1.25H9.5V11H11v6h2.5v-6h1.5l.5-2.5z" fill="#00B0FF"/></svg>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" style="margin:0 8px;">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#e6f7fb"/><rect x="7" y="7" width="10" height="10" rx="3" stroke="#00C853" stroke-width="2"/><circle cx="16.5" cy="7.5" r="1" fill="#00B0FF"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" style="margin:0 8px;">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#e6f7fb"/><rect x="7" y="9" width="2" height="6" fill="#00B0FF"/><rect x="11" y="11" width="2" height="4" fill="#00B0FF"/><rect x="15" y="9" width="2" height="6" fill="#00B0FF"/><circle cx="8" cy="7" r="1" fill="#00C853"/></svg>
+      </a>
+    </div>
+    <div style="margin-bottom:8px;font-weight:600;color:#00C853;">Azienda certificata • 20 anni di esperienza</div>
     © <span id="year"></span> L.I.F.E – Impianti e Tecnologie • P.IVA 02189330101 • 
     <a href="privacy.html" rel="noopener" aria-label="Privacy Policy">Privacy</a> • 
     <a href="cookie.html" rel="noopener" aria-label="Cookie Policy">Cookie</a>
   </footer>
+
+  <div class="cta-fixed">
+    <a href="tel:+393335044709" aria-label="Chiama ora LIFE">📞 Chiama ora</a>
+  </div>
 
   <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookie">
     <span>Usiamo cookie tecnici per migliorare l’esperienza. Continuando accetti la nostra <a href="cookie.html" target="_blank" rel="noopener">cookie policy</a>.</span>
@@ -943,39 +979,212 @@ body {
         }
       });
     });
-// Slider recensioni automatico con frecce e tempo 6s
-const reviewSlider = document.getElementById('reviewSlider');
-if (reviewSlider) {
-  const reviews = reviewSlider.querySelectorAll('.review');
-  const prevBtn = document.getElementById('reviewPrev');
-  const nextBtn = document.getElementById('reviewNext');
-  let current = 0;
-  let interval = null;
+    // Slider recensioni automatico con frecce e tempo 6s
+    const reviewSlider = document.getElementById('reviewSlider');
+    if (reviewSlider) {
+      const reviews = reviewSlider.querySelectorAll('.review');
+      const prevBtn = document.getElementById('reviewPrev');
+      const nextBtn = document.getElementById('reviewNext');
+      let current = 0;
+      let interval = null;
 
-  function showReview(idx) {
-    reviews.forEach((r, i) => {
-      r.classList.toggle('active', i === idx);
-    });
-  }
-  function nextReview() {
-    current = (current + 1) % reviews.length;
-    showReview(current);
-  }
-  function prevReview() {
-    current = (current - 1 + reviews.length) % reviews.length;
-    showReview(current);
-  }
-  function resetInterval() {
-    clearInterval(interval);
-    interval = setInterval(nextReview, 6000);
-  }
+      function showReview(idx) {
+        reviews.forEach((r, i) => {
+          r.classList.toggle('active', i === idx);
+        });
+      }
+      function nextReview() {
+        current = (current + 1) % reviews.length;
+        showReview(current);
+      }
+      function prevReview() {
+        current = (current - 1 + reviews.length) % reviews.length;
+        showReview(current);
+      }
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(nextReview, 6000);
+      }
 
-  prevBtn.addEventListener('click', () => { prevReview(); resetInterval(); });
-  nextBtn.addEventListener('click', () => { nextReview(); resetInterval(); });
+      prevBtn.addEventListener('click', () => { prevReview(); resetInterval(); });
+      nextBtn.addEventListener('click', () => { nextReview(); resetInterval(); });
 
-  showReview(current);
-  interval = setInterval(nextReview, 6000);
-}
+      showReview(current);
+      interval = setInterval(nextReview, 6000);
+    }
   </script>
+<script>
+(function(){
+  const API = 'https://life-backend-u7m1.onrender.com';
+  function getInitials(name, surname) {
+    return (name[0] || '').toUpperCase() + (surname[0] || '').toUpperCase();
+  }
+  function starsHtml(n) {
+    n = parseInt(n,10);
+    let s = '';
+    for(let i=1;i<=5;i++) s += i<=n ? '★' : '☆';
+    return s;
+  }
+  function formatMonthYear(val) {
+    if(!val) return '';
+    const [y,m] = val.split('-');
+    const mesi = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+    return `${mesi[parseInt(m,10)-1]}/${y}`;
+  }
+  function addReviewToDOM({name, surname, city, province, stars, text, date, id}) {
+    const reviewSlider = document.getElementById('reviewSlider');
+    if (!reviewSlider) return;
+    const noMsg = document.getElementById('noReviewsMsg');
+    if (noMsg) noMsg.remove();
+    const initials = (name?.[0] || '').toUpperCase() + (surname?.[0] || '').toUpperCase();
+    const starsTxt = starsHtml(stars);
+    const ariaStars = stars + " stelle";
+    let showDate = formatMonthYear(date);
+    let luogo = city && province ? `${city} (${province})` : (city || province || '');
+    const small = `— ${name} ${surname && surname[0] ? surname[0]+'.' : ''}${luogo ? ', ' + luogo : ''}, ${showDate}`;
+    const div = document.createElement('div');
+    div.className = 'review';
+    div.tabIndex = 0;
+    div.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="display:inline-block;width:36px;height:36px;background:#e6f7fb;color:${stars>=4?'#00C853':'#00B0FF'};font-weight:700;font-size:1.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;">${initials}</span>
+        <div class="stars" aria-label="${ariaStars}">${starsTxt}</div>
+      </div>
+      <p>${text ? text.replace(/</g,"&lt;") : ''}</p>
+      <small>${small}</small>
+      <button class="delete-review-btn" data-id="${id || ''}" style="display:none;margin-top:8px;background:#d32f2f;color:#fff;border:none;padding:6px 14px;border-radius:8px;cursor:pointer;">Elimina</button>
+    `;
+    reviewSlider.appendChild(div);
+  }
+
+  // Carica recensioni dal backend
+  function loadBackendReviews() {
+    fetch(API)
+      .then(r=>r.json())
+      .then(arr=>{
+        if(arr.length === 0) return; // lascia il messaggio "nessuna recensione"
+        arr.forEach(r=>addReviewToDOM(r));
+        // Mostra il pulsante elimina se la password admin è già inserita
+        const adminInput = document.getElementById('adminPass');
+        if(adminInput && adminInput.value === '080917') {
+          document.querySelectorAll('.delete-review-btn').forEach(btn => {
+            btn.style.display = 'inline-block';
+          });
+        }
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    loadBackendReviews();
+    const form = document.getElementById('reviewForm');
+    const msg = document.getElementById('revFormMsg');
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      const name = form.revName.value.trim();
+      const surname = form.revSurname.value.trim();
+      const city = form.revCity.value.trim();
+      const province = form.revProvince.value.trim().toUpperCase();
+      const stars = form.revStars.value;
+      const text = form.revText.value.trim();
+      const date = form.revDate.value;
+      if(!name || !surname || !city || !province || !stars || !text || !date) {
+        msg.textContent = "Compila tutti i campi!";
+        msg.style.color = "#d32f2f";
+        msg.style.display = "block";
+        return;
+      }
+      const review = {name,surname,city,province,stars,text,date};
+      fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(review)
+      }).then(r=>r.json()).then((saved)=>{
+        addReviewToDOM({...review, id: saved && saved.id ? saved.id : undefined});
+        msg.textContent = "Recensione inviata! Grazie.";
+        msg.style.color = "#00C853";
+        msg.style.display = "block";
+        form.reset();
+      });
+    });
+
+    // Mostra il pulsante elimina solo se la password admin è corretta
+    const adminInput = document.getElementById('adminPass');
+    if(adminInput){
+      adminInput.addEventListener('input', function() {
+        const pass = this.value;
+        document.querySelectorAll('.delete-review-btn').forEach(btn => {
+          btn.style.display = (pass === '080917') ? 'inline-block' : 'none';
+        });
+      });
+    }
+
+    // Gestione click su "Elimina"
+    document.getElementById('reviewSlider').addEventListener('click', function(e) {
+      if (e.target.classList.contains('delete-review-btn')) {
+        const id = e.target.getAttribute('data-id');
+        const pass = document.getElementById('adminPass').value;
+        if (!id) return alert('Impossibile eliminare: manca ID recensione.');
+        if (pass !== '080917') return alert('Password admin errata!');
+        if (!confirm('Sei sicuro di voler eliminare questa recensione?')) return;
+        fetch(API + '/' + id, {
+          method: 'DELETE',
+          headers: {'x-admin-pass': pass}
+        }).then(r => {
+          if (r.ok) {
+            e.target.closest('.review').remove();
+            // Se non ci sono più recensioni, mostra il messaggio
+            if (!document.querySelector('.review')) {
+              const msg = document.createElement('div');
+              msg.className = 'review active';
+              msg.id = 'noReviewsMsg';
+              msg.tabIndex = 0;
+              msg.style.textAlign = 'center';
+              msg.innerHTML = `<p style="font-size:1.15em;color:#00B0FF;margin:32px 0;">
+                Nessuna recensione presente.<br>
+                <strong>Lascia la nostra prima recensione!</strong>
+              </p>`;
+              document.getElementById('reviewSlider').appendChild(msg);
+            }
+          } else {
+            alert('Errore nella cancellazione.');
+          }
+        });
+      }
+    });
+  });
+})();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const stars = Array.from(document.querySelectorAll('.star-label'));
+  const inputs = Array.from(document.querySelectorAll('input[name="revStars"]'));
+  const starValue = document.getElementById('starValue');
+  let selected = 0;
+
+  function updateStars(n) {
+    stars.forEach(star => {
+      star.classList.toggle('selected', parseInt(star.dataset.value) <= n);
+    });
+    starValue.textContent = n ? `${n} stelle` : '';
+  }
+
+  stars.forEach(star => {
+    star.addEventListener('mouseenter', () => updateStars(star.dataset.value));
+    star.addEventListener('mouseleave', () => updateStars(selected));
+    star.addEventListener('click', () => {
+      selected = parseInt(star.dataset.value);
+      updateStars(selected);
+      document.getElementById('star' + selected).checked = true;
+    });
+  });
+
+  inputs.forEach(input => {
+    input.addEventListener('change', () => {
+      selected = parseInt(input.value);
+      updateStars(selected);
+    });
+  });
+});
+</script>
 </body>
 </html>
