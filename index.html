@@ -977,39 +977,54 @@
       });
     });
     // Slider recensioni automatico con frecce e tempo 6s
-    const reviewSlider = document.getElementById('reviewSlider');
-    if (reviewSlider) {
-      const reviews = reviewSlider.querySelectorAll('.review');
-      const prevBtn = document.getElementById('reviewPrev');
-      const nextBtn = document.getElementById('reviewNext');
-      let current = 0;
-      let interval = null;
+<script>
+const reviewSlider = document.getElementById('reviewSlider');
+if (reviewSlider) {
+  let current = 0;
+  let interval = null;
 
-      function showReview(idx) {
-        reviews.forEach((r, i) => {
-          r.classList.toggle('active', i === idx);
-        });
-      }
-      function nextReview() {
-        current = (current + 1) % reviews.length;
-        showReview(current);
-      }
-      function prevReview() {
-        current = (current - 1 + reviews.length) % reviews.length;
-        showReview(current);
-      }
-      function resetInterval() {
-        clearInterval(interval);
-        interval = setInterval(nextReview, 6000);
-      }
+  function getReviews() {
+    return reviewSlider.querySelectorAll('.review');
+  }
 
-      prevBtn.addEventListener('click', () => { prevReview(); resetInterval(); });
-      nextBtn.addEventListener('click', () => { nextReview(); resetInterval(); });
+  function showReview(idx) {
+    const reviews = getReviews();
+    if (!reviews.length) return;
+    current = (idx + reviews.length) % reviews.length;
+    reviews.forEach((r, i) => {
+      r.classList.toggle('active', i === current);
+    });
+  }
 
-      showReview(current);
-      interval = setInterval(nextReview, 6000);
-    }
-  </script>
+  function nextReview() {
+    showReview(current + 1);
+  }
+
+  function prevReview() {
+    showReview(current - 1);
+  }
+
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextReview, 6000);
+  }
+
+  document.getElementById('reviewPrev').addEventListener('click', () => { prevReview(); resetInterval(); });
+  document.getElementById('reviewNext').addEventListener('click', () => { nextReview(); resetInterval(); });
+
+  // Mostra la prima recensione all'avvio
+  showReview(current);
+  interval = setInterval(nextReview, 6000);
+
+  // Aggiorna lo slider ogni volta che viene aggiunta una recensione
+  const observer = new MutationObserver(() => {
+    const reviews = getReviews();
+    if (reviews.length === 1) current = 0;
+    showReview(current);
+  });
+  observer.observe(reviewSlider, { childList: true });
+}
+</script>
 <script>
 (function(){
   const API = 'https://life-backend-u7m1.onrender.com/api/reviews';
