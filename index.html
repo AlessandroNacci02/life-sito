@@ -1049,9 +1049,12 @@
       </div>
       <p>${text ? text.replace(/</g,"&lt;") : ''}</p>
       <small>${small}</small>
-      <button class="delete-review-btn" data-id="${id || ''}" style="display:none;margin-top:8px;background:#d32f2f;color:#fff;border:none;padding:6px 14px;border-radius:8px;cursor:pointer;">Elimina</button>
     `;
-    reviewSlider.appendChild(div);
+    // Inserisci la recensione in cima
+    reviewSlider.insertBefore(div, reviewSlider.firstChild);
+    // Rendi attiva la nuova recensione
+    document.querySelectorAll('#reviewSlider .review').forEach(r => r.classList.remove('active'));
+    div.classList.add('active');
   }
 
   // Carica recensioni dal backend
@@ -1061,13 +1064,6 @@
       .then(arr=>{
         if(arr.length === 0) return; // lascia il messaggio "nessuna recensione"
         arr.forEach(r=>addReviewToDOM(r));
-        // Mostra il pulsante elimina se la password admin è già inserita
-        const adminInput = document.getElementById('adminPass');
-        if(adminInput && adminInput.value === '080917') {
-          document.querySelectorAll('.delete-review-btn').forEach(btn => {
-            btn.style.display = 'inline-block';
-          });
-        }
       });
   }
 
@@ -1102,51 +1098,6 @@
         msg.style.display = "block";
         form.reset();
       });
-    });
-
-    // Mostra il pulsante elimina solo se la password admin è corretta
-    const adminInput = document.getElementById('adminPass');
-    if(adminInput){
-      adminInput.addEventListener('input', function() {
-        const pass = this.value;
-        document.querySelectorAll('.delete-review-btn').forEach(btn => {
-          btn.style.display = (pass === '080917') ? 'inline-block' : 'none';
-        });
-      });
-    }
-
-    // Gestione click su "Elimina"
-    document.getElementById('reviewSlider').addEventListener('click', function(e) {
-      if (e.target.classList.contains('delete-review-btn')) {
-        const id = e.target.getAttribute('data-id');
-        const pass = document.getElementById('adminPass').value;
-        if (!id) return alert('Impossibile eliminare: manca ID recensione.');
-        if (pass !== '080917') return alert('Password admin errata!');
-        if (!confirm('Sei sicuro di voler eliminare questa recensione?')) return;
-        fetch(API + '/' + id, {
-          method: 'DELETE',
-          headers: {'x-admin-pass': pass}
-        }).then(r => {
-          if (r.ok) {
-            e.target.closest('.review').remove();
-            // Se non ci sono più recensioni, mostra il messaggio
-            if (!document.querySelector('.review')) {
-              const msg = document.createElement('div');
-              msg.className = 'review active';
-              msg.id = 'noReviewsMsg';
-              msg.tabIndex = 0;
-              msg.style.textAlign = 'center';
-              msg.innerHTML = `<p style="font-size:1.15em;color:#00B0FF;margin:32px 0;">
-                Nessuna recensione presente.<br>
-                <strong>Lascia la nostra prima recensione!</strong>
-              </p>`;
-              document.getElementById('reviewSlider').appendChild(msg);
-            }
-          } else {
-            alert('Errore nella cancellazione.');
-          }
-        });
-      }
     });
   });
 })();
