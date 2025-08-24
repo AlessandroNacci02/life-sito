@@ -656,59 +656,59 @@
 
 <!-- Sostituisci il blocco recensioni nel <section id="recensioni"> con questo -->
 
-<section id="recensioni" aria-label="Recensioni clienti">
-  <h2 class="section-title">Recensioni</h2>
-  <div class="review-slider-outer">
-    <button class="slider-arrow left" id="reviewPrev" aria-label="Recensione precedente">&#8592;</button>
-    <div class="review-slider" id="reviewSlider" aria-live="polite">
-      <div class="review active" id="noReviewsMsg" tabindex="0" style="text-align:center;">
-        <p style="font-size:1.15em;color:#00B0FF;margin:32px 0;">
-          Nessuna recensione presente.<br>
-          <strong>Lascia la nostra prima recensione!</strong>
-        </p>
+  <section id="recensioni" aria-label="Recensioni clienti">
+    <h2 class="section-title">Recensioni</h2>
+    <div class="review-slider-outer">
+      <button class="slider-arrow left" id="reviewPrev" aria-label="Recensione precedente">&#8592;</button>
+      <div class="review-slider" id="reviewSlider" aria-live="polite">
+        <div class="review active" id="noReviewsMsg" tabindex="0" style="text-align:center;">
+          <p style="font-size:1.15em;color:#00B0FF;margin:32px 0;">
+            Nessuna recensione presente.<br>
+            <strong>Lascia la nostra prima recensione!</strong>
+          </p>
+        </div>
       </div>
+      <button class="slider-arrow right" id="reviewNext" aria-label="Recensione successiva">&#8594;</button>
     </div>
-    <button class="slider-arrow right" id="reviewNext" aria-label="Recensione successiva">&#8594;</button>
-  </div>
-  <div id="review-form-section" style="margin:36px auto 0 auto;max-width:540px;background:#fff;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,0.07);padding:24px;">
-    <h3 style="margin-top:0;color:#00C853;">Lascia una recensione</h3>
-    <form id="reviewForm" autocomplete="off" aria-label="Lascia una recensione">
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <input type="text" id="revName" name="revName" placeholder="Nome" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
-        <input type="text" id="revSurname" name="revSurname" placeholder="Cognome" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
-        <input type="text" id="revCity" name="revCity" placeholder="Città" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
-        <input type="text" id="revProvince" name="revProvince" placeholder="Provincia (es: LU)" maxlength="2" required style="flex:0 0 80px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;text-transform:uppercase;">
-      </div>
-      <div style="margin:14px 0 8px 0;">
-        <label for="revStars" style="font-weight:600;">Stelle:</label>
-        <span id="starInputs" style="margin-left:8px;display:inline-flex;gap:2px;flex-direction:row;">
-          <input type="radio" name="revStars" id="star1" value="1" required style="display:none;">
-          <label for="star1" class="star-label" data-value="1" aria-label="1 stella">★</label>
-          <input type="radio" name="revStars" id="star2" value="2" style="display:none;">
-          <label for="star2" class="star-label" data-value="2" aria-label="2 stelle">★</label>
-          <input type="radio" name="revStars" id="star3" value="3" style="display:none;">
-          <label for="star3" class="star-label" data-value="3" aria-label="3 stelle">★</label>
-          <input type="radio" name="revStars" id="star4" value="4" style="display:none;">
-          <label for="star4" class="star-label" data-value="4" aria-label="4 stelle">★</label>
-          <input type="radio" name="revStars" id="star5" value="5" style="display:none;">
-          <label for="star5" class="star-label" data-value="5" aria-label="5 stelle">★</label>
-        </span>
-        <span id="starValue" style="margin-left:10px;color:#00B0FF;font-weight:600;"></span>
-      </div>
-      <div style="margin-bottom:10px;">
-        <textarea id="revText" name="revText" required placeholder="Descrivi l’intervento svolto..." style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;min-height:60px;"></textarea>
-      </div>
-      <div style="margin-bottom:10px;">
-        <label for="revDate" style="font-weight:600;">Data intervento:</label>
-        <input type="month" id="revDate" name="revDate" required style="padding:8px;border-radius:8px;border:1px solid #e5e7eb;">
-      </div>
-      <div style="margin-bottom:10px;">
-        <button type="submit" class="btn" style="width:100%;">Invia recensione</button>
-      </div>
-      <div id="revFormMsg" style="color:#00C853;font-weight:600;margin-top:6px;display:none;"></div>
-    </form>
-  </div>
-</section>
+    <div id="review-form-section" style="margin:36px auto 0 auto;max-width:540px;background:#fff;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,0.07);padding:24px;">
+      <h3 style="margin-top:0;color:#00C853;">Lascia una recensione</h3>
+      <form id="reviewForm" autocomplete="off" aria-label="Lascia una recensione">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <input type="text" id="revName" name="revName" placeholder="Nome" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
+          <input type="text" id="revSurname" name="revSurname" placeholder="Cognome" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
+          <input type="text" id="revCity" name="revCity" placeholder="Città" required style="flex:1 1 120px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;">
+          <input type="text" id="revProvince" name="revProvince" placeholder="Provincia (es: LU)" maxlength="2" required style="flex:0 0 80px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;text-transform:uppercase;">
+        </div>
+        <div style="margin:14px 0 8px 0;">
+          <label for="revStars" style="font-weight:600;">Stelle:</label>
+          <span id="starInputs" style="margin-left:8px;display:inline-flex;gap:2px;flex-direction:row;">
+            <input type="radio" name="revStars" id="star1" value="1" required style="display:none;">
+            <label for="star1" class="star-label" data-value="1" aria-label="1 stella">★</label>
+            <input type="radio" name="revStars" id="star2" value="2" style="display:none;">
+            <label for="star2" class="star-label" data-value="2" aria-label="2 stelle">★</label>
+            <input type="radio" name="revStars" id="star3" value="3" style="display:none;">
+            <label for="star3" class="star-label" data-value="3" aria-label="3 stelle">★</label>
+            <input type="radio" name="revStars" id="star4" value="4" style="display:none;">
+            <label for="star4" class="star-label" data-value="4" aria-label="4 stelle">★</label>
+            <input type="radio" name="revStars" id="star5" value="5" style="display:none;">
+            <label for="star5" class="star-label" data-value="5" aria-label="5 stelle">★</label>
+          </span>
+          <span id="starValue" style="margin-left:10px;color:#00B0FF;font-weight:600;"></span>
+        </div>
+        <div style="margin-bottom:10px;">
+          <textarea id="revText" name="revText" required placeholder="Descrivi l’intervento svolto..." style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;min-height:60px;"></textarea>
+        </div>
+        <div style="margin-bottom:10px;">
+          <label for="revDate" style="font-weight:600;">Data intervento:</label>
+          <input type="month" id="revDate" name="revDate" required style="padding:8px;border-radius:8px;border:1px solid #e5e7eb;">
+        </div>
+        <div style="margin-bottom:10px;">
+          <button type="submit" class="btn" style="width:100%;">Invia recensione</button>
+        </div>
+        <div id="revFormMsg" style="color:#00C853;font-weight:600;margin-top:6px;display:none;"></div>
+      </form>
+    </div>
+  </section>
 
   <section id="chi-siamo" aria-label="Chi siamo">
     <h2 class="section-title">Chi siamo</h2>
@@ -976,148 +976,7 @@
         }
       });
     });
-    // Slider recensioni automatico con frecce e tempo 6s
-<script>
-const reviewSlider = document.getElementById('reviewSlider');
-if (reviewSlider) {
-  let current = 0;
-  let interval = null;
-
-  function getReviews() {
-    return reviewSlider.querySelectorAll('.review');
-  }
-
-  function showReview(idx) {
-    const reviews = getReviews();
-    if (!reviews.length) return;
-    current = (idx + reviews.length) % reviews.length;
-    reviews.forEach((r, i) => {
-      r.classList.toggle('active', i === current);
-    });
-  }
-
-  function nextReview() {
-    showReview(current + 1);
-  }
-
-  function prevReview() {
-    showReview(current - 1);
-  }
-
-  function resetInterval() {
-    clearInterval(interval);
-    interval = setInterval(nextReview, 6000);
-  }
-
-  document.getElementById('reviewPrev').addEventListener('click', () => { prevReview(); resetInterval(); });
-  document.getElementById('reviewNext').addEventListener('click', () => { nextReview(); resetInterval(); });
-
-  // Mostra la prima recensione all'avvio
-  showReview(current);
-  interval = setInterval(nextReview, 6000);
-
-  // Aggiorna lo slider ogni volta che viene aggiunta una recensione
-  const observer = new MutationObserver(() => {
-    const reviews = getReviews();
-    if (reviews.length === 1) current = 0;
-    showReview(current);
-  });
-  observer.observe(reviewSlider, { childList: true });
-}
-</script>
-<script>
-(function(){
-  const API = 'https://life-backend-u7m1.onrender.com/api/reviews';
-  function getInitials(name, surname) {
-    return (name[0] || '').toUpperCase() + (surname[0] || '').toUpperCase();
-  }
-  function starsHtml(n) {
-    n = parseInt(n,10);
-    let s = '';
-    for(let i=1;i<=5;i++) s += i<=n ? '★' : '☆';
-    return s;
-  }
-  function formatMonthYear(val) {
-    if(!val) return '';
-    const [y,m] = val.split('-');
-    const mesi = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
-    return `${mesi[parseInt(m,10)-1]}/${y}`;
-  }
-  function addReviewToDOM({name, surname, city, province, stars, text, date, id}) {
-    const reviewSlider = document.getElementById('reviewSlider');
-    if (!reviewSlider) return;
-    const noMsg = document.getElementById('noReviewsMsg');
-    if (noMsg) noMsg.remove();
-    const initials = (name?.[0] || '').toUpperCase() + (surname?.[0] || '').toUpperCase();
-    const starsTxt = starsHtml(stars);
-    const ariaStars = stars + " stelle";
-    let showDate = formatMonthYear(date);
-    let luogo = city && province ? `${city} (${province})` : (city || province || '');
-    const small = `— ${name} ${surname && surname[0] ? surname[0]+'.' : ''}${luogo ? ', ' + luogo : ''}, ${showDate}`;
-    const div = document.createElement('div');
-    div.className = 'review';
-    div.tabIndex = 0;
-    div.innerHTML = `
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span style="display:inline-block;width:36px;height:36px;background:#e6f7fb;color:${stars>=4?'#00C853':'#00B0FF'};font-weight:700;font-size:1.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;">${initials}</span>
-        <div class="stars" aria-label="${ariaStars}">${starsTxt}</div>
-      </div>
-      <p>${text ? text.replace(/</g,"&lt;") : ''}</p>
-      <small>${small}</small>
-    `;
-    // Inserisci la recensione in cima
-    reviewSlider.insertBefore(div, reviewSlider.firstChild);
-    // Aggiorna lo slider: rendi attiva solo la nuova recensione
-    const allReviews = reviewSlider.querySelectorAll('.review');
-    allReviews.forEach(r => r.classList.remove('active'));
-    div.classList.add('active');
-  }
-
-  // Carica recensioni dal backend
-  function loadBackendReviews() {
-    fetch(API)
-      .then(r=>r.json())
-      .then(arr=>{
-        if(arr.length === 0) return; // lascia il messaggio "nessuna recensione"
-        arr.forEach(r=>addReviewToDOM(r));
-      });
-  }
-
-  document.addEventListener('DOMContentLoaded',function(){
-    loadBackendReviews();
-    const form = document.getElementById('reviewForm');
-    const msg = document.getElementById('revFormMsg');
-    form.addEventListener('submit',function(ev){
-      ev.preventDefault();
-      const name = form.revName.value.trim();
-      const surname = form.revSurname.value.trim();
-      const city = form.revCity.value.trim();
-      const province = form.revProvince.value.trim().toUpperCase();
-      const stars = form.revStars.value;
-      const text = form.revText.value.trim();
-      const date = form.revDate.value;
-      if(!name || !surname || !city || !province || !stars || !text || !date) {
-        msg.textContent = "Compila tutti i campi!";
-        msg.style.color = "#d32f2f";
-        msg.style.display = "block";
-        return;
-      }
-      const review = {name,surname,city,province,stars,text,date};
-      fetch(API, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(review)
-      }).then(r=>r.json()).then((saved)=>{
-        addReviewToDOM({...review, id: saved && saved.id ? saved.id : undefined});
-        msg.textContent = "Recensione inviata! Grazie.";
-        msg.style.color = "#00C853";
-        msg.style.display = "block";
-        form.reset();
-      });
-    });
-  });
-})();
-</script>
+  <!-- GESTIONE RECENSIONI -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const stars = Array.from(document.querySelectorAll('.star-label'));
