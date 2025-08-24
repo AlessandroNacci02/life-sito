@@ -978,39 +978,142 @@
     });
     // Slider recensioni automatico con frecce e tempo 6s
 </script>
-  <!-- GESTIONE RECENSIONI -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const stars = Array.from(document.querySelectorAll('.star-label'));
-  const inputs = Array.from(document.querySelectorAll('input[name="revStars"]'));
-  const starValue = document.getElementById('starValue');
-  let selected = 0;
+const reviewSlider = document.getElementById('reviewSlider');
+if (reviewSlider) {
+  let current = 0;
+  let interval = null;
 
-  function updateStars(n) {
-    stars.forEach(star => {
-      star.classList.toggle('selected', parseInt(star.dataset.value) <= n);
-    });
-    starValue.textContent = n ? `${n} stelle` : '';
+  function getReviews() {
+    return reviewSlider.querySelectorAll('.review');
   }
 
-  stars.forEach(star => {
-    star.addEventListener('mouseenter', () => updateStars(star.dataset.value));
-    star.addEventListener('mouseleave', () => updateStars(selected));
-    star.addEventListener('click', () => {
-      selected = parseInt(star.dataset.value);
-      updateStars(selected);
-      document.getElementById('star' + selected).checked = true;
+  function showReview(idx) {
+    const reviews = getReviews();
+    if (!reviews.length) return;
+    current = (idx + reviews.length) % reviews.length;
+    reviews.forEach((r, i) => {
+      r.classList.toggle('active', i === current);
     });
-  });
+  }
 
-  inputs.forEach(input => {
-    input.addEventListener('change', () => {
-      selected = parseInt(input.value);
-      updateStars(selected);
+  function nextReview() {
+    showReview(current + 1);
+  }
+
+  function prevReview() {
+    showReview(current - 1);
+  }
+
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextReview, 6000);
+  }
+
+  document.getElementById('reviewPrev').addEventListener('click', () => { prevReview(); resetInterval(); });
+  document.getElementById('reviewNext').addEventListener('click', () => { nextReview(); resetInterval(); });
+
+  // Mostra la prima recensione all'avvio
+  showReview(current);
+  interval = setInterval(nextReview, 6000);
+
+  // Aggiorna lo slider ogni volta che viene aggiunta una recensione
+  const observer = new MutationObserver(() => {
+    const reviews = getReviews();
+    if (reviews.length === 1) current = 0;
+    showReview(current);
+  });
+  observer.observe(reviewSlider, { childList: true });
+}
+</script>
+<script>
+(function(){
+  const API = 'https://life-backend-u7m1.onrender.com/api/reviews';
+  function getInitials(name, surname) {
+    return (name[0] || '').toUpperCase() + (surname[0] || '').toUpperCase();
+  }
+  function starsHtml(n) {
+    n = parseInt(n,10);
+    let s = '';
+    for(let i=1;i<=5;i++) s += i<=n ? '★' : '☆';
+    return s;
+  }
+  function formatMonthYear(val) {
+    if(!val) return '';
+    const [y,m] = val.split('-');
+    const mesi = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+    return `${mesi[parseInt(m,10)-1]}/${y}`;
+  }
+  function addReviewToDOM({name, surname, city, province, stars, text, date, id}) {
+    const reviewSlider = document.getElementById('reviewSlider');
+    if (!reviewSlider) return;
+    const noMsg = document.getElementById('noReviewsMsg');
+    if (noMsg) noMsg.remove();
+    const initials = (name?.[0] || '').toUpperCase() + (surname?.[0] || '').toUpperCase();
+    const starsTxt = starsHtml(stars);
+    const ariaStars = stars + " stelle";
+    let showDate = formatMonthYear(date);
+    let luogo = city && province ? `${city} (${province})` : (city || province || '');
+    const small = `— ${name} ${surname && surname[0] ? surname[0]+'.' : ''}${luogo ? ', ' + luogo : ''}, ${showDate}`;
+    const div = document.createElement('div');
+    div.className = 'review';
+    div.tabIndex = 0;
+    div.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="display:inline-block;width:36px;height:36px;background:#e6f7fb;color:${stars>=4?'#00C853':'#00B0FF'};font-weight:700;font-size:1.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;">${initials}</span>
+        <div class="stars" aria-label="${ariaStars}">${starsTxt}</div>
+      </div>
+      <p>${text ? text.replace(/</g,"&lt;") : ''}</p>
+      <small>${small}</small>
+    `;
+    reviewSlider.appendChild(div);
+  }
+
+  function loadBackendReviews() {
+    fetch(API)
+      .then(r=>r.json())
+      .then(arr=>{
+        if(arr.length === 0) return;
+        arr.forEach(r=>addReviewToDOM(r));
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    loadBackendReviews();
+    const form = document.getElementById('reviewForm');
+    const msg = document.getElementById('revFormMsg');
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      const name = form.revName.value.trim();
+      const surname = form.revSurname.value.trim();
+      const city = form.revCity.value.trim();
+      const province = form.revProvince.value.trim().toUpperCase();
+      const stars = form.revStars.value;
+      const text = form.revText.value.trim();
+      const date = form.revDate.value;
+      if(!name || !surname || !city || !province || !stars || !text || !date) {
+        msg.textContent = "Compila tutti i campi!";
+        msg.style.color = "#d32f2f";
+        msg.style.display = "block";
+        return;
+      }
+      const review = {name,surname,city,province,stars,text,date};
+      fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(review)
+      }).then(r=>r.json()).then((saved)=>{
+        addReviewToDOM({...review, id: saved && saved.id ? saved.id : undefined});
+        msg.textContent = "Recensione inviata! Grazie.";
+        msg.style.color = "#00C853";
+        msg.style.display = "block";
+        form.reset();
+      });
     });
   });
-});
+})();
 </script>
+  <!-- GESTIONE RECENSIONI -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const stars = Array.from(document.querySelectorAll('.star-label'));
