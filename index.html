@@ -1141,8 +1141,9 @@ document.addEventListener('DOMContentLoaded', function() {
         msg.style.display = "block";
         return;
       }
-      addReviewToDOM(review);
-     const popup = document.getElementById('popupMsg');
+      // NON aggiungere la recensione al DOM (non è ancora approvata)
+loadReviews(); // aggiorna la lista recensioni (mostrerà solo quelle approvate)
+const popup = document.getElementById('popupMsg');
 popup.innerHTML = `<span style="color:#00C853;">Recensione inviata! Grazie.</span><br>
 <span style="color:#6B7280;font-size:0.98em;">
   La tua recensione verrà verificata e pubblicata dopo approvazione secondo le policy del sito.
