@@ -710,9 +710,6 @@
         </div>
         <div id="revFormMsg" style="color:#00C853;font-weight:600;margin-top:6px;display:none;"></div>
       </form>
-<p style="font-size:0.98em;color:#6B7280;margin-top:10px;">
-  La tua recensione verrà verificata e pubblicata dopo approvazione secondo le policy del sito.
-</p>
     </div>
   </section>
 
@@ -1144,12 +1141,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       addReviewToDOM(review);
-      msg.textContent = "Recensione inviata! Grazie.";
-      msg.style.color = "#00C853";
-      msg.style.display = "block";
-      form.reset();
-      updateStars(0);
-      selected = 0;
+      msg.innerHTML = `<span style="color:#00C853;">Recensione inviata! Grazie.</span><br>
+<span style="color:#6B7280;font-size:0.98em;">
+  La tua recensione verrà verificata e pubblicata dopo approvazione secondo le policy del sito.
+</span>`;
+msg.style.display = "block";
+form.reset();
+updateStars(0);
+selected = 0;
     });
   }
 });
