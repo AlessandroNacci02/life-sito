@@ -980,54 +980,6 @@
     // Slider recensioni automatico con frecce e tempo 6s
 </script>
 <script>
-const reviewSlider = document.getElementById('reviewSlider');
-if (reviewSlider) {
-  let current = 0;
-  let interval = null;
-
-  function getReviews() {
-    return reviewSlider.querySelectorAll('.review');
-  }
-
-  function showReview(idx) {
-    const reviews = getReviews();
-    if (!reviews.length) return;
-    current = (idx + reviews.length) % reviews.length;
-    reviews.forEach((r, i) => {
-      r.classList.toggle('active', i === current);
-    });
-  }
-
-  function nextReview() {
-    showReview(current + 1);
-  }
-
-  function prevReview() {
-    showReview(current - 1);
-  }
-
-  function resetInterval() {
-    clearInterval(interval);
-    interval = setInterval(nextReview, 6000);
-  }
-
-  document.getElementById('reviewPrev').addEventListener('click', () => { prevReview(); resetInterval(); });
-  document.getElementById('reviewNext').addEventListener('click', () => { nextReview(); resetInterval(); });
-
-  // Mostra la prima recensione all'avvio
-  showReview(current);
-  interval = setInterval(nextReview, 6000);
-
-  // Aggiorna lo slider ogni volta che viene aggiunta una recensione
-  const observer = new MutationObserver(() => {
-    const reviews = getReviews();
-    if (reviews.length === 1) current = 0;
-    showReview(current);
-  });
-  observer.observe(reviewSlider, { childList: true });
-}
-</script>
-<script>
 const SUPABASE_URL = 'https://rwvcsoeueyzscjxqvwip.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3dmNzb2V1ZXl6c2NqeHF2d2lwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMTQ0ODIsImV4cCI6MjA3MTc5MDQ4Mn0.k5kM71Ut6MJPgDV4NozbIFWGXYvvXNeJjSYrlrhKz7E';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -1072,13 +1024,48 @@ async function loadReviews() {
   const { data, error } = await client
     .from('reviews0')
     .select('*')
-    .order('id', { ascending: true });
+    .order('id', { ascending: false });
   if (error) return;
   const reviewSlider = document.getElementById('reviewSlider');
   if (!reviewSlider) return;
   if (!data || data.length === 0) return;
   document.getElementById('noReviewsMsg')?.remove();
   data.forEach(r => addReviewToDOM(r));
+// Slider recensioni automatico
+let current = 0;
+let interval = null;
+
+function getReviews() {
+  return document.querySelectorAll('#reviewSlider .review');
+}
+
+function showReview(idx) {
+  const reviews = getReviews();
+  if (!reviews.length) return;
+  current = (idx + reviews.length) % reviews.length;
+  reviews.forEach((r, i) => {
+    r.classList.toggle('active', i === current);
+  });
+}
+
+function nextReview() { showReview(current + 1); }
+function prevReview() { showReview(current - 1); }
+function resetInterval() {
+  clearInterval(interval);
+  interval = setInterval(nextReview, 6000);
+}
+
+document.getElementById('reviewPrev').addEventListener('click', () => { prevReview(); resetInterval(); });
+document.getElementById('reviewNext').addEventListener('click', () => { nextReview(); resetInterval(); });
+
+interval = setInterval(nextReview, 6000);
+
+const observer = new MutationObserver(() => {
+  const reviews = getReviews();
+  if (reviews.length === 1) current = 0;
+  showReview(current);
+});
+observer.observe(document.getElementById('reviewSlider'), { childList: true });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
