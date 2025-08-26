@@ -659,6 +659,8 @@
 
   <section id="recensioni" aria-label="Recensioni clienti">
     <h2 class="section-title">Recensioni</h2>
+<!-- Media stelle -->
+<div id="mediaStelle" style="text-align:center;font-size:1.2em;color:#F59E0B;font-weight:700;margin-bottom:10px;"></div>
     <div class="review-slider-outer">
       <button class="slider-arrow left" id="reviewPrev" aria-label="Recensione precedente">&#8592;</button>
       <div class="review-slider" id="reviewSlider" aria-live="polite">
@@ -708,6 +710,9 @@
         </div>
         <div id="revFormMsg" style="color:#00C853;font-weight:600;margin-top:6px;display:none;"></div>
       </form>
+<p style="font-size:0.98em;color:#6B7280;margin-top:10px;">
+  La tua recensione verrà verificata e pubblicata dopo approvazione secondo le policy del sito.
+</p>
     </div>
   </section>
 
@@ -1024,6 +1029,7 @@ async function loadReviews() {
   const { data, error } = await client
     .from('reviews0')
     .select('*')
+    .eq('approved', true)
     .order('id', { ascending: false });
   if (error) return;
   const reviewSlider = document.getElementById('reviewSlider');
@@ -1031,41 +1037,50 @@ async function loadReviews() {
   if (!data || data.length === 0) return;
   document.getElementById('noReviewsMsg')?.remove();
   data.forEach(r => addReviewToDOM(r));
-// Slider recensioni automatico
-let current = 0;
-let interval = null;
 
-function getReviews() {
-  return document.querySelectorAll('#reviewSlider .review');
-}
+  // Calcola e mostra la media stelle
+  if (data.length) {
+    const media = (data.reduce((sum, r) => sum + Number(r.stars), 0) / data.length).toFixed(1);
+    document.getElementById('mediaStelle').textContent = `Media recensioni: ${media} ★`;
+  } else {
+    document.getElementById('mediaStelle').textContent = '';
+  }
 
-function showReview(idx) {
-  const reviews = getReviews();
-  if (!reviews.length) return;
-  current = (idx + reviews.length) % reviews.length;
-  reviews.forEach((r, i) => {
-    r.classList.toggle('active', i === current);
-  });
-}
+  // Slider recensioni automatico
+  let current = 0;
+  let interval = null;
 
-function nextReview() { showReview(current + 1); }
-function prevReview() { showReview(current - 1); }
-function resetInterval() {
-  clearInterval(interval);
+  function getReviews() {
+    return document.querySelectorAll('#reviewSlider .review');
+  }
+
+  function showReview(idx) {
+    const reviews = getReviews();
+    if (!reviews.length) return;
+    current = (idx + reviews.length) % reviews.length;
+    reviews.forEach((r, i) => {
+      r.classList.toggle('active', i === current);
+    });
+  }
+
+  function nextReview() { showReview(current + 1); }
+  function prevReview() { showReview(current - 1); }
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextReview, 6000);
+  }
+
+  document.getElementById('reviewPrev').addEventListener('click', () => { prevReview(); resetInterval(); });
+  document.getElementById('reviewNext').addEventListener('click', () => { nextReview(); resetInterval(); });
+
   interval = setInterval(nextReview, 6000);
-}
 
-document.getElementById('reviewPrev').addEventListener('click', () => { prevReview(); resetInterval(); });
-document.getElementById('reviewNext').addEventListener('click', () => { nextReview(); resetInterval(); });
-
-interval = setInterval(nextReview, 6000);
-
-const observer = new MutationObserver(() => {
-  const reviews = getReviews();
-  if (reviews.length === 1) current = 0;
-  showReview(current);
-});
-observer.observe(document.getElementById('reviewSlider'), { childList: true });
+  const observer = new MutationObserver(() => {
+    const reviews = getReviews();
+    if (reviews.length === 1) current = 0;
+    showReview(current);
+  });
+  observer.observe(document.getElementById('reviewSlider'), { childList: true });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
