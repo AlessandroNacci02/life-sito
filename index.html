@@ -1071,7 +1071,7 @@ function addReviewToDOM({name, surname, city, province, stars, text, date}) {
 
 async function loadReviews() {
   const { data, error } = await supabase
-    .from('reviews')
+    .from('reviews0')
     .select('*')
     .order('id', { ascending: true });
   if (error) return;
@@ -1135,7 +1135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       const review = {name,surname,city,province,stars,text,date};
-      const { error } = await supabase.from('reviews').insert([review]);
+      const { error } = await supabase.from('reviews0').insert([review]);
       if(error) {
         msg.textContent = "Errore nell'invio. Riprova.";
         msg.style.color = "#d32f2f";
