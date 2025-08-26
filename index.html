@@ -477,6 +477,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+<div id="popupMsg" style="display:none;position:fixed;top:30px;left:50%;transform:translateX(-50%);background:#fff;border:1.5px solid #00C853;padding:18px 28px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.12);z-index:9999;font-size:1.08em;text-align:center;"></div>
   <header id="hdr" role="banner">
     <div class="brand">
       <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
@@ -1141,11 +1142,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       addReviewToDOM(review);
-      msg.innerHTML = `<span style="color:#00C853;">Recensione inviata! Grazie.</span><br>
+     const popup = document.getElementById('popupMsg');
+popup.innerHTML = `<span style="color:#00C853;">Recensione inviata! Grazie.</span><br>
 <span style="color:#6B7280;font-size:0.98em;">
   La tua recensione verrà verificata e pubblicata dopo approvazione secondo le policy del sito.
 </span>`;
-msg.style.display = "block";
+popup.style.display = "block";
+setTimeout(() => { popup.style.display = "none"; }, 5000);
+msg.style.display = "none";
 form.reset();
 updateStars(0);
 selected = 0;
