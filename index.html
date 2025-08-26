@@ -1028,9 +1028,9 @@ if (reviewSlider) {
 }
 </script>
 <script>
-const SUPABASE_URL = 'https://rwvcsoeueyzscjxqvwip.supabase.co'; // <-- incolla qui il tuo Project URL
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3dmNzb2V1ZXl6c2NqeHF2d2lwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMTQ0ODIsImV4cCI6MjA3MTc5MDQ4Mn0.k5kM71Ut6MJPgDV4NozbIFWGXYvvXNeJjSYrlrhKz7E';// <-- incolla qui la tua anon public key
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SUPABASE_URL = 'https://rwvcsoeueyzscjxqvwip.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3dmNzb2V1ZXl6c2NqeHF2d2lwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyMTQ0ODIsImV4cCI6MjA3MTc5MDQ4Mn0.k5kM71Ut6MJPgDV4NozbIFWGXYvvXNeJjSYrlrhKz7E';
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 function starsHtml(n) {
   n = parseInt(n,10);
@@ -1069,7 +1069,7 @@ function addReviewToDOM({name, surname, city, province, stars, text, date}) {
 }
 
 async function loadReviews() {
-  const { data, error } = await supabase
+  const { data, error } = await client
     .from('reviews0')
     .select('*')
     .order('id', { ascending: true });
@@ -1134,7 +1134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       const review = {name,surname,city,province,stars,text,date};
-      const { error } = await supabase.from('reviews0').insert([review]);
+      const { error } = await client.from('reviews0').insert([review]);
       if(error) {
         msg.textContent = "Errore nell'invio. Riprova.";
         msg.style.color = "#d32f2f";
